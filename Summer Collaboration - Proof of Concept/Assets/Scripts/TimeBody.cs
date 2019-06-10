@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TimeBody : MonoBehaviour
 {
+    [Tooltip("How far back in time the object can be reversed (in seconds). Negative values for infinite time.")]
     [SerializeField] private float recordTime = 10f;
 
     private bool isRewinding = false;
@@ -57,7 +58,7 @@ public class TimeBody : MonoBehaviour
 
     void Record()
     {
-        if (pointsInTime.Count > Mathf.Round(recordTime / Time.fixedDeltaTime))
+        if (recordTime >= 0 && pointsInTime.Count > Mathf.Round(recordTime / Time.fixedDeltaTime))
         {
             pointsInTime.RemoveAt(pointsInTime.Count - 1);
         }
