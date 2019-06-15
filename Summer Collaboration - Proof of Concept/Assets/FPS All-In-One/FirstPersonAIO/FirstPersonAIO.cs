@@ -311,26 +311,7 @@ public class BETA_SETTINGS{
 
     private void Update()
     {
-        #region Look Settings - Update
 
-            if(enableCameraMovement)
-        {
-            float mouseXInput;
-            float mouseYInput;
-            mouseXInput = Input.GetAxis("Mouse Y");
-            mouseYInput = Input.GetAxis("Mouse X");
-            if(targetAngles.y > 180) { targetAngles.y -= 360; followAngles.y -= 360; } else if(targetAngles.y < -180) { targetAngles.y += 360; followAngles.y += 360; }
-            if(targetAngles.x > 180) { targetAngles.x -= 360; followAngles.x -= 360; } else if(targetAngles.x < -180) { targetAngles.x += 360; followAngles.x += 360; }
-            targetAngles.y += mouseYInput * mouseSensitivity;
-            targetAngles.x += mouseXInput * mouseSensitivity;
-            targetAngles.y = Mathf.Clamp(targetAngles.y, -0.5f * Mathf.Infinity, 0.5f * Mathf.Infinity);
-            targetAngles.x = Mathf.Clamp(targetAngles.x, -0.5f * rotationRange, 0.5f * rotationRange);
-            followAngles = Vector3.SmoothDamp(followAngles, targetAngles, ref followVelocity, cameraSmoothing/100);
-            playerCamera.localRotation = Quaternion.Euler(-followAngles.x + originalRotation.x,0,0);
-            transform.localRotation =  Quaternion.Euler(0, followAngles.y+originalRotation.y, 0);
-        }
-    
-        #endregion
 
         #region Movement Settings - Update
 
@@ -347,12 +328,32 @@ public class BETA_SETTINGS{
 
     private void FixedUpdate()
     {
+        #region Look Settings - Update
+
+        if (enableCameraMovement)
+        {
+            float mouseXInput;
+            float mouseYInput;
+            mouseXInput = Input.GetAxis("Mouse Y");
+            mouseYInput = Input.GetAxis("Mouse X");
+            if (targetAngles.y > 180) { targetAngles.y -= 360; followAngles.y -= 360; } else if (targetAngles.y < -180) { targetAngles.y += 360; followAngles.y += 360; }
+            if (targetAngles.x > 180) { targetAngles.x -= 360; followAngles.x -= 360; } else if (targetAngles.x < -180) { targetAngles.x += 360; followAngles.x += 360; }
+            targetAngles.y += mouseYInput * mouseSensitivity;
+            targetAngles.x += mouseXInput * mouseSensitivity;
+            targetAngles.y = Mathf.Clamp(targetAngles.y, -0.5f * Mathf.Infinity, 0.5f * Mathf.Infinity);
+            targetAngles.x = Mathf.Clamp(targetAngles.x, -0.5f * rotationRange, 0.5f * rotationRange);
+            followAngles = Vector3.SmoothDamp(followAngles, targetAngles, ref followVelocity, cameraSmoothing / 100);
+            playerCamera.localRotation = Quaternion.Euler(-followAngles.x + originalRotation.x, 0, 0);
+            transform.localRotation = Quaternion.Euler(0, followAngles.y + originalRotation.y, 0);
+        }
+
+        #endregion
         #region Look Settings - FixedUpdate
 
         #endregion
 
         #region Movement Settings - FixedUpdate
-        
+
         bool wasWalking = !isSprinting;
         if(useStamina) {
             if(staminaInternal > 0) { if(!isCrouching) { isSprinting = Input.GetKey(KeyCode.LeftShift); } }else{isSprinting=false;}
