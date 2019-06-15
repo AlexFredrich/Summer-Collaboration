@@ -24,8 +24,8 @@ public class PickUp : MonoBehaviour
     {
         if (isLiftingObj == true && currentPickupObj != null)
         {
-            Vector3 testTransform = Vector3.Lerp(currentPickupObj.transform.position, pickupPoint.position, speed);
-            PickupRigidBody.MovePosition(testTransform);
+            Vector3 lerpTransform = Vector3.Lerp(currentPickupObj.transform.position, pickupPoint.position, speed);
+            PickupRigidBody.MovePosition(lerpTransform);
         }
     }
 
@@ -37,7 +37,6 @@ public class PickUp : MonoBehaviour
         {
             pickupObj.SetPickedUp();
             currentPickupObj = pickupObj;
-            //PickupRigidBody.MovePosition(testTransform);
             isLiftingObj = true;
             PickupRigidBody.useGravity = false;
         }

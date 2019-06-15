@@ -26,6 +26,10 @@ public class ActivateObject : MonoBehaviour
 
             objectToActivate = hit.transform.GetComponent<IActivatable>();
         }
+        else
+        {
+            objectToActivate = null;
+        }
     }
 
     private void ActivateItem()
