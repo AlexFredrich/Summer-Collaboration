@@ -3018,7 +3018,7 @@ GameObject:
   - component: {fileID: 7497241398579001818}
   - component: {fileID: 1743903374537726}
   m_Layer: 0
-  m_Name: FirstPerson
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3323,7 +3323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!114 &1743903374537726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3336,7 +3335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3aec57928519f648ac7dcb6f04053c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewindTime: 10
+  RewindTime: -1
+  StayFrozen: 0
   hands: {fileID: 2170416426958800302}
   watch: {fileID: 6398272301726636292}
 --- !u!1 &7498369093665312882

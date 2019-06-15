@@ -154,7 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &3405532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -276,7 +275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &5479801
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -398,7 +396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &20981583
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -520,7 +517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &27930170
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -642,7 +638,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &125055874
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -764,7 +759,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &126089843
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -985,7 +979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &262174539
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1181,7 +1174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &308325397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1276,7 +1268,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-138192
+  m_Name: pb_Mesh-6132
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1466,7 +1458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &436338525
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1588,7 +1579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &567559280
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1710,7 +1700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &596358734
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1832,7 +1821,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &628143757
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1954,7 +1942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &664610556
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2076,7 +2063,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &670681880
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2198,7 +2184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &690012352
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2320,7 +2305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &690027498
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2673,7 +2657,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &775972016
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2795,7 +2778,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &804118430
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2917,7 +2899,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &969806089
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3039,7 +3020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &1027726034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3161,7 +3141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1119688217
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3256,7 +3235,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-181968
+  m_Name: pb_Mesh-6148
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3419,7 +3398,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-125202
+  m_Name: pb_Mesh-6068
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3609,7 +3588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1198568507
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3737,7 +3715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1344190843
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3859,7 +3836,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1406871707
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3954,7 +3930,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-122416
+  m_Name: pb_Mesh-6130
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4144,7 +4120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1505577329
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4266,7 +4241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1515538565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4388,7 +4362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1532178276
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4510,7 +4483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1613834282
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4632,7 +4604,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &1618243331
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4754,7 +4725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1638476396
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4876,7 +4846,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1648596436
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4998,7 +4967,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &1650188152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5120,7 +5088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1672060666
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5242,7 +5209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &1672946755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5364,7 +5330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1713410348
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5486,7 +5451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &1816630984
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5608,7 +5572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1927383602
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5703,7 +5666,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19236
+  m_Name: pb_Mesh22990
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5893,7 +5856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1962074153
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6015,7 +5977,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &1969962718
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6445,7 +6406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &2068892373
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6567,7 +6527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &2092176335
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6689,7 +6648,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!65 &2111996263
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6811,7 +6769,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f35514fbe3f324893c435442e64bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordTime: -1
 --- !u!54 &2129529140
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6976,6 +6933,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7497859262817965314, guid: 62de07305e4a56d4ba08001b84bedc04,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7485915225403458096, guid: 62de07305e4a56d4ba08001b84bedc04,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -8206,11 +8168,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1420704503}
-    - target: {fileID: 7497859262817965314, guid: 62de07305e4a56d4ba08001b84bedc04,
-        type: 3}
-      propertyPath: m_Name
-      value: FirstPerson
-      objectReference: {fileID: 0}
     - target: {fileID: 7495186232166353960, guid: 62de07305e4a56d4ba08001b84bedc04,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8265,6 +8222,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743903374537726, guid: 62de07305e4a56d4ba08001b84bedc04, type: 3}
+      propertyPath: StayFrozen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743903374537726, guid: 62de07305e4a56d4ba08001b84bedc04, type: 3}
+      propertyPath: RewindTime
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62de07305e4a56d4ba08001b84bedc04, type: 3}

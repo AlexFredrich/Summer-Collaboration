@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class TimeBody : MonoBehaviour
 {
-    [Tooltip("How far back in time the object can be reversed (in seconds). Negative values for infinite time.")]
-    [SerializeField] private float recordTime = 10f;
+    //[Tooltip("How far back in time the object can be reversed (in seconds). Negative values for infinite time.")]
+    //[SerializeField] private float recordTime = 10f;
 
+    private float recordTime;
+    private bool stayFrozen;
     private bool isRewinding = false;
     List<PointInTime> pointsInTime;
     Rigidbody rb;
+    PowerRewind pRewind;
 
     void Start()
     {
         pointsInTime = new List<PointInTime>();
         rb = GetComponent<Rigidbody>();
+        pRewind = GameObject.FindGameObjectWithTag("Player").GetComponent<PowerRewind>();
+
+        recordTime = pRewind.RewindTime;
+        stayFrozen = pRewind.StayFrozen;
     }
 
     void Update()
@@ -52,7 +59,10 @@ public class TimeBody : MonoBehaviour
         }
         else
         {
-            //StopRewind();
+            if (!stayFrozen)
+            {
+                StopRewind();
+            }
         }
     }
 
