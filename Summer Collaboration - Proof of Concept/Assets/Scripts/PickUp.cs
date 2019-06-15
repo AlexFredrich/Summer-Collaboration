@@ -11,13 +11,24 @@ public class PickUp : MonoBehaviour
 
     private PickupObj currentPickupObj;
     private Rigidbody PickupRigidBody;
-    private bool isLiftingObj;
+    private bool isLiftingObj = false;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool IsLiftingObj
     {
-        
+        get
+        {
+            return isLiftingObj;
+        }
     }
+
+    public PickupObj CurrentPickupObj
+    {
+        get
+        {
+            return currentPickupObj;
+        }
+    }
+
 
     // Update is called once per frame
     void FixedUpdate()

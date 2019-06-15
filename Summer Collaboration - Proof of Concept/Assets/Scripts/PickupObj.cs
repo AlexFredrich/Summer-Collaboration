@@ -21,7 +21,6 @@ public class PickupObj : MonoBehaviour, IActivatable
 
     public void Activate()
     {
-        Debug.Log("Test");
         OnPickUpObjActivated(this);
     }
 

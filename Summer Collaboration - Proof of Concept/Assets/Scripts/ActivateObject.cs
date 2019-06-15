@@ -7,6 +7,8 @@ public class ActivateObject : MonoBehaviour
     [SerializeField]
     float maxActivateDistance = 5f;
 
+    [SerializeField]
+    PickUp pickUp;
 
     IActivatable objectToActivate;
 
@@ -36,7 +38,12 @@ public class ActivateObject : MonoBehaviour
     {
         if (objectToActivate != null)
         {
-            if (Input.GetButtonDown("Activate"))
+            if (Input.GetButtonDown("Activate") && pickUp.IsLiftingObj == true)
+            {
+                objectToActivate = pickUp.CurrentPickupObj;
+                objectToActivate.Activate();
+            }
+            else if (Input.GetButtonDown("Activate"))
             {
                 objectToActivate.Activate();
 
