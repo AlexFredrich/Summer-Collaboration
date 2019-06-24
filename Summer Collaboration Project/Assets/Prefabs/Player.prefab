@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 350
+  jumpHeight: 300
 --- !u!114 &7710631290727512946
 MonoBehaviour:
   m_ObjectHideFlags: 0
