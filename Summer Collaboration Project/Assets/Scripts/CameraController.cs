@@ -13,15 +13,19 @@ public class CameraController : MonoBehaviour
     private float maxVerticalLookAngle = 60.0f;         //x axis max clamp
 
     [SerializeField]
-    private float verticalLookSensitivity = 5.0f;      //x axis sensitivity
+    private float verticalLookSensitivity = 5.0f;       //x axis sensitivity
     [SerializeField]
-    private float horizontalLookSensitivity = 3.0f;    //y axis sensitivity
+    private float horizontalLookSensitivity = 3.0f;     //y axis sensitivity
 
     private Camera _firstPersonCamera;
 
     private float _currentYRotation;
     private float _currentXRotation;
 
+    private bool cursorIsLocked;
+
+    private const string MOUSEXAXISNAME = "Mouse X";
+    private const string MOUSEYAXISNAME = "Mouse Y";
     private const string CANCELBUTTONNAME = "Cancel";
 
     #endregion
@@ -32,49 +36,63 @@ public class CameraController : MonoBehaviour
         _currentXRotation = 0.0f;
 
         _firstPersonCamera = this.gameObject.GetComponentInChildren<Camera>();      //TODO: add check for whether there is actually a camera in children
+        cursorIsLocked = false;
 
-        LockCursor();
+        /* Lock cursor (move to UI script eventually) */
+        ChangeCursorLock();
     }
     
     private void Update()
     {
         GetMouseInput();
-        RotatePlayerAndCamera();
+        RotatePlayer();
+        RotateCamera();
 
-        /* Unlock cursor */
+        /* Unlock cursor (move to UI script eventually) */
         if (Input.GetButton(CANCELBUTTONNAME))
         {
-            UnlockCursor();
+            ChangeCursorLock();
         }
     }
 
     private void GetMouseInput()
     {
         /* Get mouse input */
-        _currentYRotation += Input.GetAxis("Mouse X") * verticalLookSensitivity;
-        _currentXRotation += Input.GetAxis("Mouse Y") * horizontalLookSensitivity;
+        _currentYRotation += Input.GetAxis(MOUSEXAXISNAME) * verticalLookSensitivity;
+        _currentXRotation += Input.GetAxis(MOUSEYAXISNAME) * horizontalLookSensitivity;
 
         /* Clamp vertical look angle */
         _currentXRotation = Mathf.Clamp(_currentXRotation, minVerticalLookAngle, maxVerticalLookAngle);
     }
 
-    private void RotatePlayerAndCamera()
+    private void RotatePlayer()
     {
-        /* Rotate player and camera based on mouse input */
+        /* Rotate player based on mouse horizontal input */
         this.gameObject.transform.localEulerAngles = new Vector3(0, _currentYRotation, 0);
-        _firstPersonCamera.transform.localEulerAngles = new Vector3(_currentXRotation, _currentYRotation, 0);   //needs to be -_currentXRotation if MouseY is not set to inverse in project settings
     }
 
-    //TODO: move these to UI script later on
-    private void LockCursor()
+    private void RotateCamera()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        /* Rotate camera based on mouse vertical input */
+        _firstPersonCamera.transform.localEulerAngles = new Vector3(_currentXRotation, 0, 0);   //MouseY needs to be set to inverse in project settings
     }
 
-    private void UnlockCursor()
+    //TODO: move this to UI script later on
+    private void ChangeCursorLock()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        if (cursorIsLocked)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+
+            cursorIsLocked = false;
+        }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+
+            cursorIsLocked = true;
+        }
     }
 }

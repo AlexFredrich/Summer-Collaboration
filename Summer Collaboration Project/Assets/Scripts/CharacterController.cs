@@ -10,7 +10,7 @@ public class CharacterController : MonoBehaviour
     #region Variables
 
     [SerializeField]
-    private int walkSpeed = 250;
+    private int walkSpeed = 350;
 
     private Rigidbody _rb;
     private Vector3 _movementDirection;
