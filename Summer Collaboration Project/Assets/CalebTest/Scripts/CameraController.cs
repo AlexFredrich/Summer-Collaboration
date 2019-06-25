@@ -7,15 +7,12 @@ public class CameraController : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField]
-    [Range(10, 170)]
+    [SerializeField] [Range(10, 170)]
     private int verticalLookAngleRange = 120;
 
-    [SerializeField]
-    [Range(0.0f, 10.0f)]
+    [SerializeField] [Range(0.0f, 10.0f)]
     private float verticalLookSensitivity = 5.0f;       //x axis sensitivity
-    [SerializeField]
-    [Range(0.0f, 10.0f)]
+    [SerializeField] [Range(0.0f, 10.0f)]
     private float horizontalLookSensitivity = 3.0f;     //y axis sensitivity
 
     private Camera _firstPersonCamera;
@@ -76,7 +73,7 @@ public class CameraController : MonoBehaviour
     
     private void Update()
     {
-        GetMouseInput();
+        GetLookInput();
         RotatePlayer();
         RotateCamera();
 
@@ -87,7 +84,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void GetMouseInput()
+    private void GetLookInput()
     {
         /* Get mouse input */
         _currentYRotation += Input.GetAxis(MOUSEXAXISNAME) * verticalLookSensitivity;
