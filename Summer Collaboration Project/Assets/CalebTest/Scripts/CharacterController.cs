@@ -23,10 +23,13 @@ public class CharacterController : MonoBehaviour
     private CapsuleCollider _collider;
     private Vector3 _movementDirection;
 
-    private const int MINRUNNINGEXTRASPEED = 100;
+    private int _currentSpeed;
+
+    private const int MINRUNNINGEXTRASPEED = 150;
 
     private const string HORIZONTALAXISNAME = "Horizontal";
     private const string VERTICALAXISNAME = "Vertical";
+    private const string SPRINTBUTTONNAME = "Sprint";
     private const string JUMPBUTTONNAME = "Jump";
     private const string WALLTAGNAME = "Wall";
     private const string GROUNDTAGNAME = "Ground";
@@ -44,6 +47,8 @@ public class CharacterController : MonoBehaviour
 
     private void Awake()
     {
+        _currentSpeed = walkSpeed;
+
         _rb = this.gameObject.GetComponent<Rigidbody>();
         _collider = this.gameObject.GetComponentInChildren<CapsuleCollider>();  //TODO: add check for whether there is actually a collider in children
     }
@@ -51,6 +56,7 @@ public class CharacterController : MonoBehaviour
     private void Update()
     {
         GetMovementInput();
+        ChangeSpeed();
     }
 
     private void FixedUpdate()
@@ -79,13 +85,25 @@ public class CharacterController : MonoBehaviour
         _movementDirection = ((horizontalInput * transform.right) + (verticalInput * transform.forward)).normalized;
     }
 
+    private void ChangeSpeed()
+    {
+        if (Input.GetButton(SPRINTBUTTONNAME))
+        {
+            _currentSpeed = runSpeed;
+        }
+        else
+        {
+            _currentSpeed = walkSpeed;
+        }
+    }
+
     private void MovePlayer()
     {
         /* Get current y velocity */
         Vector3 yVelocity = new Vector3(0, _rb.velocity.y, 0);
 
         /* Move player based on velocity from directional input */
-        _rb.velocity = _movementDirection * walkSpeed * Time.deltaTime;
+        _rb.velocity = _movementDirection * _currentSpeed * Time.deltaTime;
 
         /* Add y velocity back in to desired movement direction */
         _rb.velocity += yVelocity;      //since _movementDirection only has values for x and z velocity we need to add y velocity to not constantly set vertical movement to 0 every fixed update

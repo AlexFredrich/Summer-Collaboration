@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 350
-  runSpeed: 500
+  runSpeed: 600
   jumpHeight: 300
 --- !u!114 &7710631290727512946
 MonoBehaviour:
@@ -253,7 +253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7463d1c05fdf9ea4c93c3b50c96c6316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minVerticalLookAngle: -60
-  maxVerticalLookAngle: 60
+  verticalLookAngleRange: 120
   verticalLookSensitivity: 5
   horizontalLookSensitivity: 3
