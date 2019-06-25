@@ -33,6 +33,7 @@ public class CameraController : MonoBehaviour
     private const string MOUSEXAXISNAME = "Mouse X";
     private const string MOUSEYAXISNAME = "Mouse Y";
     private const string CANCELBUTTONNAME = "Cancel";
+    private const string FIRSTPERSONCAMERANAME = "Main Camera";
 
     #endregion
 
@@ -44,7 +45,29 @@ public class CameraController : MonoBehaviour
         _minVerticalLookAngle = -(verticalLookAngleRange / 2);
         _maxVerticalLookAngle = verticalLookAngleRange / 2;
 
-        _firstPersonCamera = this.gameObject.GetComponentInChildren<Camera>();      //TODO: add check for whether there is actually a camera in children
+        /* Adds a new child object with a camera if one cannot be found */
+        if (this.gameObject.transform.Find(FIRSTPERSONCAMERANAME))
+        {
+            _firstPersonCamera = this.gameObject.transform.Find(FIRSTPERSONCAMERANAME).GetComponent<Camera>();
+        }
+        else
+        {
+            GameObject newCamera = new GameObject(FIRSTPERSONCAMERANAME);
+
+            newCamera.AddComponent<Camera>();
+
+            if (!FindObjectOfType<AudioListener>())
+            {
+                newCamera.AddComponent<AudioListener>();
+            }
+            
+            newCamera.transform.parent = this.gameObject.transform;
+            newCamera.transform.localPosition = new Vector3(0, 0.5f, 0);
+            newCamera.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+            _firstPersonCamera = newCamera.GetComponent<Camera>();
+        }
+
         _cursorIsLocked = false;
 
         /* Lock cursor (move to UI script eventually) */

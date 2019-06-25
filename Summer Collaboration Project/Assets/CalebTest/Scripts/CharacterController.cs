@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Rigidbody))]
 
 //This script goes on the Player GameObject
@@ -19,8 +20,8 @@ public class CharacterController : MonoBehaviour
     [Range(150, 600)]
     private int jumpHeight = 300;
 
-    private Rigidbody _rb;
     private CapsuleCollider _collider;
+    private Rigidbody _rb;
     private Vector3 _movementDirection;
 
     private int _currentSpeed;
@@ -38,7 +39,7 @@ public class CharacterController : MonoBehaviour
 
     private void OnValidate()
     {
-        /* Requires runSpeed to be faster than walkSpeed when changed in editor */
+        /* Requires runSpeed to be faster than walkSpeed when changed in the editor */
         if (runSpeed < walkSpeed + MINRUNNINGEXTRASPEED)
         {
             runSpeed = walkSpeed + MINRUNNINGEXTRASPEED;
@@ -49,8 +50,8 @@ public class CharacterController : MonoBehaviour
     {
         _currentSpeed = walkSpeed;
 
+        _collider = this.gameObject.GetComponent<CapsuleCollider>();
         _rb = this.gameObject.GetComponent<Rigidbody>();
-        _collider = this.gameObject.GetComponentInChildren<CapsuleCollider>();  //TODO: add check for whether there is actually a collider in children
     }
     
     private void Update()
@@ -71,7 +72,7 @@ public class CharacterController : MonoBehaviour
         float verticalInput = 0.0f;
 
         /* Get directional input if the player can move in that direction*/
-        if (CanMoveInDirection(this.gameObject.transform.right * Input.GetAxisRaw(HORIZONTALAXISNAME)))
+        if (CanMoveInDirection(this.gameObject.transform.right * Input.GetAxisRaw(HORIZONTALAXISNAME)))     //currently not requiring the player to be on the ground so they can direct their flight in mid-air
         {
             horizontalInput = Input.GetAxisRaw(HORIZONTALAXISNAME);
         }
@@ -87,7 +88,8 @@ public class CharacterController : MonoBehaviour
 
     private void ChangeSpeed()
     {
-        if (Input.GetButton(SPRINTBUTTONNAME))
+        /* Makes the player move faster when sprint is held down and the player is on the ground */
+        if (Input.GetButton(SPRINTBUTTONNAME) && IsOnGround())
         {
             _currentSpeed = runSpeed;
         }
