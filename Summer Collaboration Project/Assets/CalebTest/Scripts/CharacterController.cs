@@ -10,11 +10,14 @@ public class CharacterController : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] [Range(100, 750)]
+    [SerializeField]
+    [Range(100, 750)]
     private int walkSpeed = 350;
-    [SerializeField] [Range(100, 750)]
+    [SerializeField]
+    [Range(100, 750)]
     private int runSpeed = 500;
-    [SerializeField] [Range(150, 600)]
+    [SerializeField]
+    [Range(150, 600)]
     private int jumpHeight = 300;
 
     private CapsuleCollider _collider;

@@ -7,12 +7,15 @@ public class CameraController : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] [Range(10, 170)]
+    [SerializeField]
+    [Range(10, 170)]
     private int verticalLookAngleRange = 120;
 
-    [SerializeField] [Range(0.0f, 10.0f)]
+    [SerializeField]
+    [Range(0.0f, 10.0f)]
     private float verticalLookSensitivity = 5.0f;       //x axis sensitivity
-    [SerializeField] [Range(0.0f, 10.0f)]
+    [SerializeField]
+    [Range(0.0f, 10.0f)]
     private float horizontalLookSensitivity = 3.0f;     //y axis sensitivity
 
     private Camera _firstPersonCamera;
@@ -42,7 +45,7 @@ public class CameraController : MonoBehaviour
         _minVerticalLookAngle = -(verticalLookAngleRange / 2);
         _maxVerticalLookAngle = verticalLookAngleRange / 2;
 
-        /* Adds a new child object with a camera if one cannot be found */
+        /* Adds a new child GameObject with a Camera component and AudioListener if one cannot be found */
         if (this.gameObject.transform.Find(FIRSTPERSONCAMERANAME))
         {
             _firstPersonCamera = this.gameObject.transform.Find(FIRSTPERSONCAMERANAME).GetComponent<Camera>();
@@ -60,7 +63,7 @@ public class CameraController : MonoBehaviour
             
             newCamera.transform.parent = this.gameObject.transform;
             newCamera.transform.localPosition = new Vector3(0, 0.5f, 0);
-            newCamera.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            newCamera.transform.localRotation = Quaternion.identity;
 
             _firstPersonCamera = newCamera.GetComponent<Camera>();
         }
