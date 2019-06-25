@@ -8,21 +8,27 @@ public class CameraController : MonoBehaviour
     #region Variables
 
     [SerializeField]
-    private float minVerticalLookAngle = -60.0f;        //x axis min clamp
-    [SerializeField]
-    private float maxVerticalLookAngle = 60.0f;         //x axis max clamp
+    [Range(10, 170)]
+    private int verticalLookAngleRange = 120;
 
     [SerializeField]
+    [Range(0.0f, 10.0f)]
     private float verticalLookSensitivity = 5.0f;       //x axis sensitivity
     [SerializeField]
+    [Range(0.0f, 10.0f)]
     private float horizontalLookSensitivity = 3.0f;     //y axis sensitivity
 
     private Camera _firstPersonCamera;
 
+    [Range(-85.0f, 0.0f)]
+    private float _minVerticalLookAngle;     //x axis min clamp
+    [Range(0.0f, 85.0f)]
+    private float _maxVerticalLookAngle;     //x axis max clamp
+
     private float _currentYRotation;
     private float _currentXRotation;
 
-    private bool cursorIsLocked;
+    private bool _cursorIsLocked;
 
     private const string MOUSEXAXISNAME = "Mouse X";
     private const string MOUSEYAXISNAME = "Mouse Y";
@@ -35,8 +41,11 @@ public class CameraController : MonoBehaviour
         _currentYRotation = 0.0f;
         _currentXRotation = 0.0f;
 
+        _minVerticalLookAngle = -(verticalLookAngleRange / 2);
+        _maxVerticalLookAngle = verticalLookAngleRange / 2;
+
         _firstPersonCamera = this.gameObject.GetComponentInChildren<Camera>();      //TODO: add check for whether there is actually a camera in children
-        cursorIsLocked = false;
+        _cursorIsLocked = false;
 
         /* Lock cursor (move to UI script eventually) */
         ChangeCursorLock();
@@ -62,7 +71,7 @@ public class CameraController : MonoBehaviour
         _currentXRotation += Input.GetAxis(MOUSEYAXISNAME) * horizontalLookSensitivity;
 
         /* Clamp vertical look angle */
-        _currentXRotation = Mathf.Clamp(_currentXRotation, minVerticalLookAngle, maxVerticalLookAngle);
+        _currentXRotation = Mathf.Clamp(_currentXRotation, _minVerticalLookAngle, _maxVerticalLookAngle);
     }
 
     private void RotatePlayer()
@@ -80,19 +89,19 @@ public class CameraController : MonoBehaviour
     //TODO: move this to UI script later on
     private void ChangeCursorLock()
     {
-        if (cursorIsLocked)
+        if (_cursorIsLocked)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
-            cursorIsLocked = false;
+            _cursorIsLocked = false;
         }
         else
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
 
-            cursorIsLocked = true;
+            _cursorIsLocked = true;
         }
     }
 }

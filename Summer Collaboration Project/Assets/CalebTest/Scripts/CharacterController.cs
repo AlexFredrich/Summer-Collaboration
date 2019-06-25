@@ -10,13 +10,20 @@ public class CharacterController : MonoBehaviour
     #region Variables
 
     [SerializeField]
+    [Range(100, 750)]
     private int walkSpeed = 350;
     [SerializeField]
+    [Range(100, 750)]
+    private int runSpeed = 500;
+    [SerializeField]
+    [Range(150, 600)]
     private int jumpHeight = 300;
 
     private Rigidbody _rb;
     private CapsuleCollider _collider;
     private Vector3 _movementDirection;
+
+    private const int MINRUNNINGEXTRASPEED = 100;
 
     private const string HORIZONTALAXISNAME = "Horizontal";
     private const string VERTICALAXISNAME = "Vertical";
@@ -25,6 +32,15 @@ public class CharacterController : MonoBehaviour
     private const string GROUNDTAGNAME = "Ground";
 
     #endregion
+
+    private void OnValidate()
+    {
+        /* Requires runSpeed to be faster than walkSpeed when changed in editor */
+        if (runSpeed < walkSpeed + MINRUNNINGEXTRASPEED)
+        {
+            runSpeed = walkSpeed + MINRUNNINGEXTRASPEED;
+        }
+    }
 
     private void Awake()
     {

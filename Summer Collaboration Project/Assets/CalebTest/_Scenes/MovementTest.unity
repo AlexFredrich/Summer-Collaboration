@@ -734,5 +734,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 971804716, guid: cb14c3e97f2f4f44580918b34c47b9ae, type: 3}
+      propertyPath: walkSpeed
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 971804716, guid: cb14c3e97f2f4f44580918b34c47b9ae, type: 3}
+      propertyPath: runSpeed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710631290727512946, guid: cb14c3e97f2f4f44580918b34c47b9ae,
+        type: 3}
+      propertyPath: minVerticalLookAngle
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710631290727512946, guid: cb14c3e97f2f4f44580918b34c47b9ae,
+        type: 3}
+      propertyPath: maxVerticalLookAngle
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb14c3e97f2f4f44580918b34c47b9ae, type: 3}
