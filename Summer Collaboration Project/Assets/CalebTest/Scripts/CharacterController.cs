@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Rigidbody))]
 
-//This script goes on the Player GameObject
+//This script goes on the player
 public class CharacterController : MonoBehaviour
 {
     #region Variables
@@ -114,12 +114,9 @@ public class CharacterController : MonoBehaviour
     private void Jump()
     {
         /* Makes the player jump when the jump button is pressed and the player is on the ground */
-        if (Input.GetButtonDown(JUMPBUTTONNAME))
+        if (Input.GetButtonDown(JUMPBUTTONNAME) && IsOnGround())
         {
-            if (IsOnGround())
-            {
-                _rb.velocity = new Vector3(0, jumpHeight * Time.deltaTime, 0);
-            }
+            _rb.velocity = new Vector3(0, jumpHeight * Time.deltaTime, 0);
         }
     }
 

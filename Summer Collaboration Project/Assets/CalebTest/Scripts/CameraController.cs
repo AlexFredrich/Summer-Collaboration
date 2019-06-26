@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//This script goes on the Player GameObject
+//This script goes on the player
 public class CameraController : MonoBehaviour
 {
     #region Variables
@@ -46,9 +46,9 @@ public class CameraController : MonoBehaviour
         _maxVerticalLookAngle = verticalLookAngleRange / 2;
 
         /* Adds a new child GameObject with a Camera component and AudioListener if one cannot be found */
-        if (this.gameObject.transform.Find(FIRSTPERSONCAMERANAME))
+        if (this.gameObject.transform.Find(FIRSTPERSONCAMERANAME) != null)
         {
-            _firstPersonCamera = this.gameObject.transform.Find(FIRSTPERSONCAMERANAME).GetComponent<Camera>();
+            _firstPersonCamera = this.gameObject.transform.Find(FIRSTPERSONCAMERANAME).gameObject.GetComponent<Camera>();
         }
         else
         {
@@ -56,7 +56,7 @@ public class CameraController : MonoBehaviour
 
             newCamera.AddComponent<Camera>();
 
-            if (!FindObjectOfType<AudioListener>())
+            if (FindObjectOfType<AudioListener>() == null)
             {
                 newCamera.AddComponent<AudioListener>();
             }

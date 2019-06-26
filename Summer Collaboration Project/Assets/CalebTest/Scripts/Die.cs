@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script goes on the player
 public class Die : MonoBehaviour
 {
     #region Variables
@@ -32,18 +33,22 @@ public class Die : MonoBehaviour
     private void Awake()
     {
         /* Instantiates the Level Manager prefab if one cannot be found */
-        if (FindObjectOfType<LevelManager>())
+        if (FindObjectOfType<LevelManager>() != null)
         {
-            _levelManager = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
+            _levelManager = FindObjectOfType<LevelManager>().gameObject.GetComponent<LevelManager>();
         }
         else
         {
             Instantiate(Resources.Load(LEVELMANAGERPREFABNAME), new Vector3(0, 0, 0), Quaternion.identity);
 
-            _levelManager = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
+            _levelManager = FindObjectOfType<LevelManager>().gameObject.GetComponent<LevelManager>();
         }
     }
 
+    /// <summary>
+    /// Starts the player respawn process.
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator KillPlayer()
     {
         PlayerIsDying = true;

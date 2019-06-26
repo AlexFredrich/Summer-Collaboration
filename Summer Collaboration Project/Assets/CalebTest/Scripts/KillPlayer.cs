@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script goes everything that can kill the player
 public class KillPlayer : MonoBehaviour
 {
+    #region Variables
+
+    private const string PLAYERTAGNAME = "Player";
+
+    #endregion
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        /* Kills the player when this touches them */
+        if (other.gameObject.tag == PLAYERTAGNAME)
         {
             Die death = other.GetComponent<Die>();
 
