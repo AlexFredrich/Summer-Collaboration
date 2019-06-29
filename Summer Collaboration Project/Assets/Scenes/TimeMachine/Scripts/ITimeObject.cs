@@ -15,8 +15,6 @@ public interface ITimeObject
 
     void ClearTimeHistory();
 
-    bool RecordDeltaChanges { get; }
-
     TimeState CurrentTimeState { get; }
 
     TimeState PreviousTimeState { get; }

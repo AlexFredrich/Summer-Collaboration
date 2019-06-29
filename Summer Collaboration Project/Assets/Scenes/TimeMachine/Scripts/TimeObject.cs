@@ -12,11 +12,6 @@ public class TimeObject : MonoBehaviour, ITimeObject
     [SerializeField]
     private int deltaPointLimit = 200;
 
-    // Should delta change be recorded
-    [SerializeField]
-    private bool _recordDeltaChanges = true;
-    public bool RecordDeltaChanges { get => _recordDeltaChanges; private set => _recordDeltaChanges = value; }
-
     [SerializeField]
     private TimeState _previousTimeState;
     public TimeState PreviousTimeState { get => _previousTimeState; private set => _previousTimeState = value; }
@@ -125,17 +120,13 @@ public class TimeObject : MonoBehaviour, ITimeObject
                     break;
 
                 }
-            case TimeState.NORMAL:
+            case TimeState.RECORDING:
                 {
 
-                    // Record delta changes if allowed
-                    if (RecordDeltaChanges) RecordDeltaChange();
-
-                    // Cull only when there is no delta change
+                    RecordDeltaChange();
                     if (thisRigidbody.velocity.magnitude == 0 && TimePointDelta.Count > deltaPointLimit) CullTimeDelta();
 
                     break;
-
                 }
 
         }
