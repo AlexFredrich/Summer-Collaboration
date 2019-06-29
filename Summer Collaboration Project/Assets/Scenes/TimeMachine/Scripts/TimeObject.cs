@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -25,6 +26,11 @@ public class TimeObject : MonoBehaviour, ITimeObject
     [SerializeField]
     private TimePoint _currentTimePoint;
     public TimePoint CurrentTimePoint { get => _currentTimePoint; private set => _currentTimePoint = value; }
+
+    // Records Initial Timepoint since game started
+    [SerializeField]
+    private TimePoint _originalTimePoint;
+    public TimePoint OriginalTimePoint { get => _originalTimePoint; private set => _originalTimePoint = value; }
 
     // List of time point delta changes
     [SerializeField]
@@ -64,12 +70,15 @@ public class TimeObject : MonoBehaviour, ITimeObject
     private void Update()
     {
 
+#if UNITY_DEBUG
         // Time testing keys
         if (Input.GetKeyDown(KeyCode.Alpha1)) FreezeTime();
         if (Input.GetKeyDown(KeyCode.Alpha2)) UnfreezeTime();
         if (Input.GetKeyDown(KeyCode.Alpha3)) ReverseTime();
         if (Input.GetKeyDown(KeyCode.Alpha4)) ForwardTime();
-
+        if (Input.GetKeyDown(KeyCode.Alpha5)) CurrentTimeState = TimeState.RECORDING;
+        else if (Input.GetKeyUp(KeyCode.Alpha5)) CurrentTimeState = TimeState.NORMAL;
+#endif
         TimeHandler();
 
     }
@@ -128,6 +137,13 @@ public class TimeObject : MonoBehaviour, ITimeObject
 
                     break;
                 }
+            case TimeState.RESET:
+                {
+
+                    ResetToInitial();
+                    break;
+
+                }
 
         }
 
@@ -152,6 +168,7 @@ public class TimeObject : MonoBehaviour, ITimeObject
 
     // Public callable functions for Time Object
     // Freezing and Unfreezing object, Forward and reverse
+    // Start Recording changes
     // ==================================================================================
     public void FreezeTime()
     {
@@ -199,6 +216,22 @@ public class TimeObject : MonoBehaviour, ITimeObject
         }
 
     }
+
+    public void StartRecording(bool clearHistory = false)
+    {
+
+        if (clearHistory) ClearTimeHistory();
+        CurrentTimeState = TimeState.RECORDING;
+
+    }
+
+    public void EndRecording()
+    {
+
+        CurrentTimeState = TimeState.NORMAL;
+
+    }
+
     public void ClearTimeHistory()
     {
 
@@ -206,22 +239,25 @@ public class TimeObject : MonoBehaviour, ITimeObject
         CurrentTimeState = TimeState.NORMAL;
 
     }
-    // ==================================================================================
 
+    public void ResetTime()
+    {
+
+        CurrentTimeState = TimeState.RESET;
+
+    }
+
+    // ==================================================================================
     // Interpolate between points A -> B
     private void Interpolate(int modifier)
     {
-
-        Debug.Log(currentTimeIndex);
 
         if (interpolateTime < 0.001) interpolateTime += Time.deltaTime;
         else if (interpolateTime >= 0.001)
         {
 
             // Round off interpolation and remove minute transform discrepancies
-            this.transform.position = TimePointDelta[currentTimeIndex].thisPosition;
-            this.transform.rotation = TimePointDelta[currentTimeIndex].thisRotation;
-            this.transform.localScale = TimePointDelta[currentTimeIndex].thisScale;
+            RoundOffInterpolation(TimePointDelta[currentTimeIndex]);
 
             interpolateTime = 0;
 
@@ -274,5 +310,38 @@ public class TimeObject : MonoBehaviour, ITimeObject
 
     }
 
+    private float resetTimer = 0;
+
+    private void ResetToInitial()
+    {
+
+        resetTimer += Time.deltaTime;
+
+        this.transform.position = Vector3.Lerp(this.transform.position, OriginalTimePoint.thisPosition, resetTimer);
+        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, OriginalTimePoint.thisRotation, resetTimer);
+        this.transform.localScale = Vector3.Lerp(this.transform.localScale, OriginalTimePoint.thisScale, resetTimer);
+
+        if (resetTimer > 1)
+        {
+
+            resetTimer = 0;
+            ClearTimeHistory();
+            CurrentTimeState = TimeState.NORMAL;
+
+            //
+            RoundOffInterpolation(OriginalTimePoint);
+
+        }
+
+    }
+
+    private void RoundOffInterpolation(TimePoint finalT)
+    {
+
+        this.transform.position = finalT.thisPosition;
+        this.transform.rotation = finalT.thisRotation;
+        this.transform.localScale = finalT.thisScale;
+
+    }
 
 }

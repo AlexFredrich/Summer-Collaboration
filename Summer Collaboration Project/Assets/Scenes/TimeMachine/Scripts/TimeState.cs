@@ -6,6 +6,7 @@ public enum TimeState
     RECORDING,
     FROZEN,
     REVERSE,
-    FORWARD
+    FORWARD,
+    RESET
 
 }

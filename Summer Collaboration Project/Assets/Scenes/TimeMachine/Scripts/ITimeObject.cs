@@ -19,6 +19,8 @@ public interface ITimeObject
 
     TimeState PreviousTimeState { get; }
 
+    TimePoint OriginalTimePoint { get; }
+
     List<TimePoint> TimePointDelta { get; }
 
 }
