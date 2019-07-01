@@ -40,8 +40,7 @@ public class ActivateObject : MonoBehaviour
         {
             if (Input.GetButtonDown("Activate") && pickUp.IsLiftingObj == true)
             {
-                objectToActivate = pickUp.CurrentPickupObj;
-                objectToActivate.Activate();
+                pickUp.CurrentPickupObj.Activate();
             }
             else if (Input.GetButtonDown("Activate"))
             {
@@ -50,6 +49,4 @@ public class ActivateObject : MonoBehaviour
             }
         }
     }
-
-
 }

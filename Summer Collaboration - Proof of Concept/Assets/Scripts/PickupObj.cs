@@ -7,7 +7,7 @@ public class PickupObj : MonoBehaviour, IActivatable
 {
     public static event Action<PickupObj> PickUpObjActivated;
 
-    public enum State { Neutral, PickedUp};
+    public enum State { Neutral, PickedUp, Frozen};
 
     State currentState;
 
@@ -32,6 +32,11 @@ public class PickupObj : MonoBehaviour, IActivatable
     public void SetPickedUp()
     {
         currentState = State.PickedUp;
+    }
+
+    public void SetFrozen()
+    {
+        currentState = State.Frozen;
     }
 
     private void OnPickUpObjActivated(PickupObj pickUpObj)

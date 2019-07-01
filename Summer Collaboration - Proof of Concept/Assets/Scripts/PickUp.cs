@@ -8,9 +8,11 @@ public class PickUp : MonoBehaviour
     Transform pickupPoint;
     [SerializeField]
     float speed = .5f;
+    [SerializeField]
+    float rotationSlowSpeed = .8f;
 
     private PickupObj currentPickupObj;
-    private Rigidbody PickupRigidBody;
+    private Rigidbody pickupRigidBody;
     private bool isLiftingObj = false;
 
     public bool IsLiftingObj
@@ -36,27 +38,34 @@ public class PickUp : MonoBehaviour
         if (isLiftingObj == true && currentPickupObj != null)
         {
             Vector3 lerpTransform = Vector3.Lerp(currentPickupObj.transform.position, pickupPoint.position, speed);
-            PickupRigidBody.MovePosition(lerpTransform);
+            pickupRigidBody.MovePosition(lerpTransform);
         }
     }
 
     void LiftObj(PickupObj pickupObj)
     {
-        PickupRigidBody = pickupObj.gameObject.GetComponent<Rigidbody>();
+        pickupRigidBody = pickupObj.gameObject.GetComponent<Rigidbody>();
 
         if (pickupObj.CurrentState == PickupObj.State.Neutral)
         {
             pickupObj.SetPickedUp();
             currentPickupObj = pickupObj;
             isLiftingObj = true;
-            PickupRigidBody.useGravity = false;
+            pickupRigidBody.useGravity = false;
+            pickupRigidBody.velocity = Vector3.zero;
+            pickupRigidBody.angularDrag = rotationSlowSpeed;
+            pickupRigidBody.drag = 1f;
         }
         else if (pickupObj.CurrentState == PickupObj.State.PickedUp)
         {
             pickupObj.SetNeutral();
             isLiftingObj = false;
-            PickupRigidBody.useGravity = true;
+            pickupRigidBody.useGravity = true;
             currentPickupObj = null;
+        }
+        else if (pickupObj.CurrentState == PickupObj.State.Frozen)
+        {
+            // do stuff here for frozen object
         }
     }
 
