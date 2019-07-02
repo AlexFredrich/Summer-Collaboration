@@ -32,17 +32,17 @@ public class Die : MonoBehaviour
 
     private void Awake()
     {
-        /* Instantiates the Level Manager prefab if one cannot be found */
-        if (FindObjectOfType<LevelManager>() != null)
-        {
-            _levelManager = FindObjectOfType<LevelManager>().gameObject.GetComponent<LevelManager>();
-        }
-        else
-        {
-            Instantiate(Resources.Load(LEVELMANAGERPREFABNAME), new Vector3(0, 0, 0), Quaternion.identity);
+        ///* Instantiates the Level Manager prefab if one cannot be found */
+        //if (FindObjectOfType<LevelManager>() != null)
+        //{
+        //    _levelManager = FindObjectOfType<LevelManager>().gameObject.GetComponent<LevelManager>();
+        //}
+        //else
+        //{
+        //    Instantiate(Resources.Load(LEVELMANAGERPREFABNAME), new Vector3(0, 0, 0), Quaternion.identity);
 
-            _levelManager = FindObjectOfType<LevelManager>().gameObject.GetComponent<LevelManager>();
-        }
+        //    _levelManager = FindObjectOfType<LevelManager>().gameObject.GetComponent<LevelManager>();
+        //}
     }
 
     /// <summary>

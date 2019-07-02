@@ -11,13 +11,13 @@ public class LevelManager : MonoBehaviour
     private Transform firstCheckpoint;
 
     private Transform _currentCheckpointTransform;
-    private GameObject player;
+    private GameObject _player;
 
     #endregion
 
     private void Awake()
     {
-        player = FindObjectOfType<CharacterController>().gameObject;
+        _player = FindObjectOfType<CharacterController>().gameObject;
     }
 
     private void Start()
@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            _currentCheckpointTransform = player.transform;  //makes the first checkpoint the player's starting position if it wasn't set in the editor
+            _currentCheckpointTransform = _player.transform;  //makes the first checkpoint the player's starting position if it wasn't set in the editor
         }
     }
 
@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public void RespawnPlayer()
     {
-        player.transform.position = _currentCheckpointTransform.transform.position;
-        player.transform.rotation = _currentCheckpointTransform.transform.rotation;
+        _player.transform.position = _currentCheckpointTransform.transform.position;
+        _player.transform.rotation = _currentCheckpointTransform.transform.rotation;
     }
 }
