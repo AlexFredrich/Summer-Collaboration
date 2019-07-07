@@ -50,6 +50,14 @@ public class TimeObject : MonoBehaviour, ITimeObject
     public UnityEvent OnReverseComplete;
     public UnityEvent OnForwardComplete;
 
+    private void Awake()
+    {
+
+        // save initial time point from the moment the game starts
+        OriginalTimePoint = new TimePoint(this.gameObject.transform);
+
+    }
+
     private void Start()
     {
 
