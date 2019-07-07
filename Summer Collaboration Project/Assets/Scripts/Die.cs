@@ -26,23 +26,15 @@ public class Die : MonoBehaviour
         }
     }
 
-    private const string LEVELMANAGERPREFABNAME = "Level Manager";
-
     #endregion
 
-    private void Awake()
+    private void Start()
     {
-        ///* Instantiates the Level Manager prefab if one cannot be found */
-        //if (FindObjectOfType<LevelManager>() != null)
-        //{
-        //    _levelManager = FindObjectOfType<LevelManager>().gameObject.GetComponent<LevelManager>();
-        //}
-        //else
-        //{
-        //    Instantiate(Resources.Load(LEVELMANAGERPREFABNAME), new Vector3(0, 0, 0), Quaternion.identity);
-
-        //    _levelManager = FindObjectOfType<LevelManager>().gameObject.GetComponent<LevelManager>();
-        //}
+        //* Checkpoint script will instantiate the Level Manager prefab during Awake() if there is not already one in the scene */
+        if (FindObjectOfType<LevelManager>() != null)
+        {
+            _levelManager = FindObjectOfType<LevelManager>().gameObject.GetComponent<LevelManager>();
+        }
     }
 
     /// <summary>
