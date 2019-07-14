@@ -27,6 +27,15 @@ public class CharacterController : MonoBehaviour
 
     private int _currentSpeed;
 
+    private static CharacterController _instance;
+    public static CharacterController Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
     private const int MINRUNNINGEXTRASPEED = 150;
 
     private const string HORIZONTALAXISNAME = "Horizontal";
@@ -49,6 +58,15 @@ public class CharacterController : MonoBehaviour
 
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
         _currentSpeed = walkSpeed;
 
         _collider = this.gameObject.GetComponent<CapsuleCollider>();
@@ -168,5 +186,14 @@ public class CharacterController : MonoBehaviour
 
         /* Returns false if the CapsuleCast doesn't hit an object tagged "Ground" */
         return false;
+    }
+
+    private void OnDestroy()
+    {
+        /* Resets the instance to null when this is destroyed to allow for respawning/changing levels */
+        if (this == _instance)
+        {
+            _instance = null;
+        }
     }
 }

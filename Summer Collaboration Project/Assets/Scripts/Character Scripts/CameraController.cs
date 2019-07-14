@@ -32,6 +32,15 @@ public class CameraController : MonoBehaviour
 
     private bool _cursorIsLocked;
 
+    private static CameraController _instance;
+    public static CameraController Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
     private const string MOUSEXAXISNAME = "Mouse X";
     private const string MOUSEYAXISNAME = "Mouse Y";
     private const string CANCELBUTTONNAME = "Cancel";
@@ -41,6 +50,15 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
         _currentYRotation = 0.0f;
         _currentXRotation = 0.0f;
 
@@ -127,6 +145,15 @@ public class CameraController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
 
             _cursorIsLocked = true;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        /* Resets the instance to null when this is destroyed to allow for respawning/changing levels */
+        if (this == _instance)
+        {
+            _instance = null;
         }
     }
 }
