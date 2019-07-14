@@ -10,7 +10,11 @@ public class ActivateObject : MonoBehaviour
     [SerializeField]
     PickUp pickUp;
 
+    [SerializeField]
+    TimeObjectManager TimeObjectManager;
+
     IActivatable objectToActivate;
+    TimeObject objectToFreeze;
 
     private void Update()
     {
@@ -27,10 +31,12 @@ public class ActivateObject : MonoBehaviour
             Debug.Log("Hit: " + hit.transform.name);
 
             objectToActivate = hit.transform.GetComponent<IActivatable>();
+            objectToFreeze = hit.transform.GetComponent<TimeObject>();
         }
         else
         {
             objectToActivate = null;
+            objectToFreeze = null;
         }
     }
 
@@ -48,5 +54,24 @@ public class ActivateObject : MonoBehaviour
 
             }
         }
+    }
+    private void FreezeObject()
+    {
+        if (objectToFreeze != null)
+        {
+            if (Input.GetButtonDown("Freeze"))
+            {
+                if (TimeObjectManager.FrozenObjects.Contains(objectToFreeze))
+                {
+                    objectToFreeze.UnfreezeTime();
+                }
+                else
+                {
+                    objectToFreeze.FreezeTime();
+                }
+                
+            }
+        }
+       
     }
 }

@@ -47,4 +47,5 @@ public class PickupObj : MonoBehaviour, IActivatable
         }
         
     }
+    
 }
