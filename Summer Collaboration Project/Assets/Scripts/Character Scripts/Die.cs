@@ -11,22 +11,11 @@ public class Die : MonoBehaviour
 
     [SerializeField]
     [Range(0.0f, 10.0f)]
-    private float respawnDelayInSeconds = 3.0f;
+    private float _respawnDelayInSeconds = 3.0f;
 
     private LevelManager _levelManager;
-
-    private bool _playerIsDying;
-    public bool PlayerIsDying
-    {
-        get
-        {
-            return _playerIsDying;
-        }
-        private set
-        {
-            _playerIsDying = value;
-        }
-    }
+    
+    public bool PlayerIsDying { get; private set; }
 
     #endregion
 
@@ -48,7 +37,7 @@ public class Die : MonoBehaviour
 
         //TODO: death screen or whatever
 
-        yield return new WaitForSecondsRealtime(respawnDelayInSeconds);
+        yield return new WaitForSecondsRealtime(_respawnDelayInSeconds);
 
         _levelManager.RespawnPlayer();
 

@@ -13,13 +13,13 @@ public class CharacterController : MonoBehaviour
 
     [SerializeField]
     [Range(100, 750)]
-    private int walkSpeed = 350;
+    private int _walkSpeed = 350;
     [SerializeField]
     [Range(100, 750)]
-    private int runSpeed = 500;
+    private int _runSpeed = 500;
     [SerializeField]
     [Range(150, 600)]
-    private int jumpHeight = 300;
+    private int _jumpHeight = 300;
 
     private CapsuleCollider _collider;
     private Rigidbody _rb;
@@ -27,48 +27,32 @@ public class CharacterController : MonoBehaviour
 
     private int _currentSpeed;
 
-    private static CharacterController _instance;
-    public static CharacterController Instance
-    {
-        get
-        {
-            return _instance;
-        }
-    }
+    public static CharacterController Instance { get; private set; }
 
     private const int MINRUNNINGEXTRASPEED = 150;
 
-    private const string HORIZONTALAXISNAME = "Horizontal";
-    private const string VERTICALAXISNAME = "Vertical";
-    private const string SPRINTBUTTONNAME = "Sprint";
-    private const string JUMPBUTTONNAME = "Jump";
+    //private const string HORIZONTALAXISNAME = "Horizontal";
+    //private const string VERTICALAXISNAME = "Vertical";
+    //private const string SPRINTBUTTONNAME = "Sprint";
+    //private const string JUMPBUTTONNAME = "Jump";
     private const string WALLTAGNAME = "Wall";
     private const string GROUNDTAGNAME = "Ground";
 
     #endregion
 
-    private void OnValidate()
-    {
-        /* Requires runSpeed to be faster than walkSpeed when changed in the editor */
-        if (runSpeed < walkSpeed + MINRUNNINGEXTRASPEED)
-        {
-            runSpeed = walkSpeed + MINRUNNINGEXTRASPEED;
-        }
-    }
-
     private void Awake()
     {
         /* Allows only a single instance of this script */
-        if (_instance != null && _instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this.gameObject);
         }
         else
         {
-            _instance = this;
+            Instance = this;
         }
 
-        _currentSpeed = walkSpeed;
+        _currentSpeed = _walkSpeed;
 
         _collider = this.gameObject.GetComponent<CapsuleCollider>();
         _rb = this.gameObject.GetComponent<Rigidbody>();
@@ -88,34 +72,54 @@ public class CharacterController : MonoBehaviour
 
     private void GetMovementInput()
     {
-        float horizontalInput = 0.0f;
-        float verticalInput = 0.0f;
+        int verticalInput = 0;
+        int horizontalInput = 0;
 
-        /* Get directional input if the player can move in that direction*/
-        if (CanMoveInDirection(this.gameObject.transform.right * Input.GetAxisRaw(HORIZONTALAXISNAME)))     //currently not requiring the player to be on the ground so they can direct their flight in mid-air
+        /* Takes directional input if the player can move in that direction (currently not requiring the player to be on the ground so they can direct their flight in mid-air) */
+        if (Input.GetKey(GameManager.Instance.MNKForwardButton))
         {
-            horizontalInput = Input.GetAxisRaw(HORIZONTALAXISNAME);
+            if (CanMoveInDirection(this.gameObject.transform.forward * 1))
+            {
+                verticalInput = 1;
+            }
+        }
+        else if (Input.GetKey(GameManager.Instance.MNKBackwardButton))
+        {
+            if (CanMoveInDirection(this.gameObject.transform.forward * -1))
+            {
+                verticalInput = -1;
+            }
         }
 
-        if (CanMoveInDirection(this.gameObject.transform.forward * Input.GetAxisRaw(VERTICALAXISNAME)))
+        if (Input.GetKey(GameManager.Instance.MNKLeftButton))
         {
-            verticalInput = Input.GetAxisRaw(VERTICALAXISNAME);
+            if (CanMoveInDirection(this.gameObject.transform.right * -1))
+            {
+                horizontalInput = -1;
+            }
+        }
+        else if (Input.GetKey(GameManager.Instance.MNKRightButton))
+        {
+            if (CanMoveInDirection(this.gameObject.transform.right * 1))
+            {
+                horizontalInput = 1;
+            }
         }
 
         /* Create vector 3 for x and z velocity */
-        _movementDirection = ((horizontalInput * transform.right) + (verticalInput * transform.forward)).normalized;
+        _movementDirection = ((verticalInput * transform.forward) + (horizontalInput * transform.right)).normalized;
     }
 
     private void ChangeSpeed()
     {
         /* Makes the player move faster when sprint is held down and the player is on the ground */
-        if (Input.GetButton(SPRINTBUTTONNAME) && IsOnGround())
+        if (Input.GetKey(GameManager.Instance.MNKSprintButton) && IsOnGround())
         {
-            _currentSpeed = runSpeed;
+            _currentSpeed = _runSpeed;
         }
         else
         {
-            _currentSpeed = walkSpeed;
+            _currentSpeed = _walkSpeed;
         }
     }
 
@@ -134,11 +138,69 @@ public class CharacterController : MonoBehaviour
     private void Jump()
     {
         /* Makes the player jump when the jump button is pressed and the player is on the ground */
-        if (Input.GetButtonDown(JUMPBUTTONNAME) && IsOnGround())
+        if (Input.GetKeyDown(GameManager.Instance.MNKJumpButton) && IsOnGround())
         {
-            _rb.velocity = new Vector3(0, jumpHeight * Time.deltaTime, 0);
+            _rb.velocity = new Vector3(0, _jumpHeight * Time.deltaTime, 0);
         }
     }
+
+    #region Using Unity Input Manager (old way)
+
+    //private void GetMovementInput()
+    //{
+    //    float horizontalInput = 0.0f;
+    //    float verticalInput = 0.0f;
+
+    //    /* Get directional input if the player can move in that direction*/
+    //    if (CanMoveInDirection(this.gameObject.transform.right * Input.GetAxisRaw(HORIZONTALAXISNAME)))     //currently not requiring the player to be on the ground so they can direct their flight in mid-air
+    //    {
+    //        horizontalInput = Input.GetAxisRaw(HORIZONTALAXISNAME);
+    //    }
+
+    //    if (CanMoveInDirection(this.gameObject.transform.forward * Input.GetAxisRaw(VERTICALAXISNAME)))
+    //    {
+    //        verticalInput = Input.GetAxisRaw(VERTICALAXISNAME);
+    //    }
+
+    //    /* Create vector 3 for x and z velocity */
+    //    _movementDirection = ((horizontalInput * transform.right) + (verticalInput * transform.forward)).normalized;
+    //}
+
+    //private void ChangeSpeed()
+    //{
+    //    /* Makes the player move faster when sprint is held down and the player is on the ground */
+    //    if (Input.GetButton(SPRINTBUTTONNAME) && IsOnGround())
+    //    {
+    //        _currentSpeed = _runSpeed;
+    //    }
+    //    else
+    //    {
+    //        _currentSpeed = _walkSpeed;
+    //    }
+    //}
+
+    //private void MovePlayer()
+    //{
+    //    /* Get current y velocity */
+    //    Vector3 yVelocity = new Vector3(0, _rb.velocity.y, 0);
+
+    //    /* Move player based on velocity from directional input */
+    //    _rb.velocity = _movementDirection * _currentSpeed * Time.deltaTime;
+
+    //    /* Add y velocity back in to desired movement direction */
+    //    _rb.velocity += yVelocity;      //since _movementDirection only has values for x and z velocity we need to add y velocity to not constantly set vertical movement to 0 every fixed update
+    //}
+
+    //private void Jump()
+    //{
+    //    /* Makes the player jump when the jump button is pressed and the player is on the ground */
+    //    if (Input.GetButtonDown(JUMPBUTTONNAME) && IsOnGround())
+    //    {
+    //        _rb.velocity = new Vector3(0, _jumpHeight * Time.deltaTime, 0);
+    //    }
+    //}
+
+    #endregion
 
     private bool CanMoveInDirection(Vector3 direction)
     {
@@ -189,12 +251,21 @@ public class CharacterController : MonoBehaviour
         return false;
     }
 
+    private void OnValidate()
+    {
+        /* Requires runSpeed to be faster than walkSpeed when changed in the editor */
+        if (_runSpeed < _walkSpeed + MINRUNNINGEXTRASPEED)
+        {
+            _runSpeed = _walkSpeed + MINRUNNINGEXTRASPEED;
+        }
+    }
+
     private void OnDestroy()
     {
         /* Resets the instance to null when this is destroyed to allow for respawning/changing levels */
-        if (this == _instance)
+        if (this == Instance)
         {
-            _instance = null;
+            Instance = null;
         }
     }
 }

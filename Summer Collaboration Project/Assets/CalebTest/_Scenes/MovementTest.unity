@@ -799,7 +799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1786621859570557219, guid: 65d8a1114451001418a51382d436c3a4,
         type: 3}
-      propertyPath: firstCheckpoint
+      propertyPath: _firstCheckpoint
       value: 
       objectReference: {fileID: 1886289827}
     m_RemovedComponents: []

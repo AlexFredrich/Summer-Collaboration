@@ -11,14 +11,14 @@ public class CameraController : MonoBehaviour
 
     [SerializeField]
     [Range(10, 170)]
-    private int verticalLookAngleRange = 120;
+    private int _verticalLookAngleRange = 120;
 
     [SerializeField]
     [Range(0.0f, 10.0f)]
-    private float verticalLookSensitivity = 5.0f;       //x axis sensitivity
+    private float _verticalLookSensitivity = 5.0f;       //x axis sensitivity
     [SerializeField]
     [Range(0.0f, 10.0f)]
-    private float horizontalLookSensitivity = 3.0f;     //y axis sensitivity
+    private float _horizontalLookSensitivity = 3.0f;     //y axis sensitivity
 
     private Camera _firstPersonCamera;
 
@@ -32,14 +32,7 @@ public class CameraController : MonoBehaviour
 
     private bool _cursorIsLocked;
 
-    private static CameraController _instance;
-    public static CameraController Instance
-    {
-        get
-        {
-            return _instance;
-        }
-    }
+    public static CameraController Instance { get; private set; }
 
     private const string MOUSEXAXISNAME = "Mouse X";
     private const string MOUSEYAXISNAME = "Mouse Y";
@@ -51,20 +44,20 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         /* Allows only a single instance of this script */
-        if (_instance != null && _instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this.gameObject);
         }
         else
         {
-            _instance = this;
+            Instance = this;
         }
 
         _currentYRotation = 0.0f;
         _currentXRotation = 0.0f;
 
-        _minVerticalLookAngle = -(verticalLookAngleRange / 2);
-        _maxVerticalLookAngle = verticalLookAngleRange / 2;
+        _minVerticalLookAngle = -(_verticalLookAngleRange / 2);
+        _maxVerticalLookAngle = _verticalLookAngleRange / 2;
 
         /* Adds a new child GameObject with a Camera component and AudioListener if one cannot be found */
         if (this.gameObject.transform.Find(FIRSTPERSONCAMERANAME) != null)
@@ -102,7 +95,7 @@ public class CameraController : MonoBehaviour
         RotateCamera();
 
         /* Unlock cursor (move to UI script eventually) */
-        if (Input.GetButton(CANCELBUTTONNAME))
+        if (Input.GetKeyDown(GameManager.Instance.MNKPauseButton))
         {
             ChangeCursorLock();
         }
@@ -111,8 +104,8 @@ public class CameraController : MonoBehaviour
     private void GetLookInput()
     {
         /* Get mouse input */
-        _currentYRotation += Input.GetAxis(MOUSEXAXISNAME) * verticalLookSensitivity;
-        _currentXRotation += Input.GetAxis(MOUSEYAXISNAME) * horizontalLookSensitivity;
+        _currentYRotation += Input.GetAxis(MOUSEXAXISNAME) * _verticalLookSensitivity;
+        _currentXRotation += Input.GetAxis(MOUSEYAXISNAME) * _horizontalLookSensitivity;
 
         /* Clamp vertical look angle */
         _currentXRotation = Mathf.Clamp(_currentXRotation, _minVerticalLookAngle, _maxVerticalLookAngle);
@@ -152,9 +145,9 @@ public class CameraController : MonoBehaviour
     private void OnDestroy()
     {
         /* Resets the instance to null when this is destroyed to allow for respawning/changing levels */
-        if (this == _instance)
+        if (this == Instance)
         {
-            _instance = null;
+            Instance = null;
         }
     }
 }

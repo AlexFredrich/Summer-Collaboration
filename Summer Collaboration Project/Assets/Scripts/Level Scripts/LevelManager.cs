@@ -10,41 +10,34 @@ public class LevelManager : MonoBehaviour
     #region Variables
     
     [SerializeField]
-    private Transform firstCheckpoint;
+    private Transform _firstCheckpoint;
 
     private Transform _currentCheckpointTransform;
     private GameObject _player;
 
-    private static LevelManager _instance;
-    public static LevelManager Instance
-    {
-        get
-        {
-            return _instance;
-        }
-    }
+    public static LevelManager Instance { get; private set; }
 
     #endregion
 
     private void Awake()
     {
         /* Allows only a single instance of this script */
-        if (_instance != null && _instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this.gameObject);
         }
         else
         {
-            _instance = this;
+            Instance = this;
         }
     }
 
     private void Start()
     {
         /* Assigns the first checkpoint of the game */
-        if (firstCheckpoint != null)
+        if (_firstCheckpoint != null)
         {
-            _currentCheckpointTransform = firstCheckpoint;   //makes the current checkpoint the first checkpoint without having to touch it
+            _currentCheckpointTransform = _firstCheckpoint;   //makes the current checkpoint the first checkpoint without having to touch it
         }
         else
         {
@@ -75,9 +68,9 @@ public class LevelManager : MonoBehaviour
     private void OnDestroy()
     {
         /* Resets the instance to null when this is destroyed to allow for changing levels */
-        if (this == _instance)
+        if (this == Instance)
         {
-            _instance = null;
+            Instance = null;
         }
     }
 }
