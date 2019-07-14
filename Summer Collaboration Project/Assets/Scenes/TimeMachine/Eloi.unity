@@ -244,15 +244,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 943ccb84bc8d00545864c13ebb6d2a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  customEditor: 0
   deltaPointLimit: 200
-  _recordDeltaChanges: 1
-  _previousTimeState: 0
+  _previousTimeState: 4
   _currentTimeState: 0
   _currentTimePoint:
     thisTimeState: 0
-    thisPosition: {x: 0, y: 0, z: 0}
-    thisRotation: {x: 0, y: 0, z: 0, w: 0}
-    thisScale: {x: 0, y: 0, z: 0}
+    thisPosition: {x: 0, y: 5, z: 0}
+    thisRotation: {x: 0, y: 0, z: 0, w: 1}
+    thisScale: {x: 1, y: 1, z: 1}
+  _originalTimePoint:
+    thisTimeState: 0
+    thisPosition: {x: 0, y: 5, z: 0}
+    thisRotation: {x: 0, y: 0, z: 0, w: 1}
+    thisScale: {x: 1, y: 1, z: 1}
   _timePointDelta: []
   OnReverseComplete:
     m_PersistentCalls:

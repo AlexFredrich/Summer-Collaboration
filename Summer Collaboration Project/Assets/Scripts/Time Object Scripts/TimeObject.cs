@@ -1,13 +1,22 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.Events;
 
+[ExecuteInEditMode]
 public class TimeObject : MonoBehaviour, ITimeObject
 {
+
+#if UNITY_EDITOR
+
+    [SerializeField]
+    private bool customEditor = true;
+
+#endif
 
     // How much time points should be recorded before culling starts
     [SerializeField]
@@ -46,6 +55,9 @@ public class TimeObject : MonoBehaviour, ITimeObject
     // Track the current index of the TimePointDelta;
     private int currentTimeIndex;
 
+    // Clear history after time reverse is complete?
+    private bool clearAfterReverseComplete;
+
     // Allow other gameobjects to listen into time events
     public UnityEvent OnReverseComplete;
     public UnityEvent OnForwardComplete;
@@ -55,6 +67,7 @@ public class TimeObject : MonoBehaviour, ITimeObject
 
         // save initial time point from the moment the game starts
         OriginalTimePoint = new TimePoint(this.gameObject.transform);
+        CurrentTimePoint = OriginalTimePoint;
 
     }
 
@@ -78,7 +91,16 @@ public class TimeObject : MonoBehaviour, ITimeObject
     private void Update()
     {
 
-#if UNITY_DEBUG
+#if UNITY_EDITOR
+
+        if (transform.hasChanged)
+        {
+
+            _currentTimePoint = new TimePoint(this.transform);
+            transform.hasChanged = false;
+
+        }
+
         // Time testing keys
         if (Input.GetKeyDown(KeyCode.Alpha1)) FreezeTime();
         if (Input.GetKeyDown(KeyCode.Alpha2)) UnfreezeTime();
@@ -86,6 +108,7 @@ public class TimeObject : MonoBehaviour, ITimeObject
         if (Input.GetKeyDown(KeyCode.Alpha4)) ForwardTime();
         if (Input.GetKeyDown(KeyCode.Alpha5)) CurrentTimeState = TimeState.RECORDING;
         else if (Input.GetKeyUp(KeyCode.Alpha5)) CurrentTimeState = TimeState.NORMAL;
+
 #endif
         TimeHandler();
 
@@ -127,8 +150,9 @@ public class TimeObject : MonoBehaviour, ITimeObject
                     if (currentTimeIndex == 0)
                     {
 
-                        if (PreviousTimeState == TimeState.FROZEN ||
-                            PreviousTimeState == TimeState.NORMAL) ClearTimeHistory();
+                        if ((PreviousTimeState == TimeState.FROZEN ||
+                            PreviousTimeState == TimeState.NORMAL) &&
+                            clearAfterReverseComplete) ClearTimeHistory();
                         OnReverseComplete.Invoke();
                         FreezeTime();
 
@@ -224,6 +248,21 @@ public class TimeObject : MonoBehaviour, ITimeObject
         }
 
     }
+    public void ReverseTime(bool clearReverse)
+    {
+
+        if (TimePointDelta.Count != 0)
+        {
+
+            TransformFreeze();
+            PreviousTimeState = CurrentTimeState;
+            CurrentTimeState = TimeState.REVERSE;
+            clearAfterReverseComplete = clearReverse;
+
+        }
+
+    }
+
 
     public void StartRecording(bool clearHistory = false)
     {
@@ -351,5 +390,73 @@ public class TimeObject : MonoBehaviour, ITimeObject
         this.transform.localScale = finalT.thisScale;
 
     }
+
+
+    public bool IsSimilarTimepoint(TimePoint A, TimePoint B)
+    {
+
+        bool similar = true;
+
+        if (A.thisPosition != B.thisPosition) similar = false;
+        if (A.thisRotation != B.thisRotation) similar = false;
+        if (A.thisScale != B.thisScale) similar = false;
+        if (A.thisTimeState != B.thisTimeState) similar = false;
+
+        return similar;
+
+    }
+
+    [MenuItem("Save Time pre-recorded time data")]
+    public static void SaveSerializedTimeObjectDelta(TimeObject sourceObject)
+    {
+
+        SerializedTimeDeltaChanges serializedData = new SerializedTimeDeltaChanges();
+        serializedData.timeObjectDeltaChanges = sourceObject.TimePointDelta;
+
+        //
+        string dataInJSON = JsonUtility.ToJson(serializedData);
+
+        var path = EditorUtility.SaveFilePanel(
+            "Save Recording as JSON",
+            "",
+            ".json",
+            ".json");
+
+        if (path.Length != 0)
+        {
+
+            File.WriteAllText(path, dataInJSON);
+
+        }
+
+    }
+
+    public void LoadSerializedTimeObjectDelta()
+    {
+
+        List<TimePoint> loadedDeltaPoints = new List<TimePoint>();
+
+        var path = EditorUtility.OpenFilePanel(
+            "Open JSON File", "", ".json");
+
+        if (path.Length != 0)
+        {
+
+            string data = File.ReadAllText(path);
+            SerializedTimeDeltaChanges serializedData = JsonUtility.FromJson<SerializedTimeDeltaChanges>(data);
+            loadedDeltaPoints = serializedData.timeObjectDeltaChanges;
+            TimePointDelta = loadedDeltaPoints;
+
+        }
+
+    }
+
+}
+
+[Serializable]
+public class SerializedTimeDeltaChanges
+{
+
+    public List<TimePoint> timeObjectDeltaChanges;
 
 }
