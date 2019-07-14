@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
+
 //This script goes on the player
 public class CameraController : MonoBehaviour
 {

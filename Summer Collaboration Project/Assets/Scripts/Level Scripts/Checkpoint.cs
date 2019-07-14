@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
+
 //This script goes on every checkpoint
 public class Checkpoint : MonoBehaviour
 {

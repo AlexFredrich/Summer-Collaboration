@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
+
 //This script goes on an empty gameobject
 public class LevelManager : MonoBehaviour
 {
