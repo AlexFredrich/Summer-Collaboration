@@ -15,11 +15,28 @@ public class LevelManager : MonoBehaviour
     private Transform _currentCheckpointTransform;
     private GameObject _player;
 
+    private static LevelManager _instance;
+    public static LevelManager Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
     #endregion
 
     private void Awake()
     {
-        _player = FindObjectOfType<CharacterController>().gameObject;
+        /* Allows only a single instance of this script */
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
     }
 
     private void Start()
@@ -33,6 +50,8 @@ public class LevelManager : MonoBehaviour
         {
             _currentCheckpointTransform = _player.transform;  //makes the first checkpoint the player's starting position if it wasn't set in the editor
         }
+
+        _player = CharacterController.Instance.gameObject;
     }
 
     /// <summary>
@@ -51,5 +70,14 @@ public class LevelManager : MonoBehaviour
     {
         _player.transform.position = _currentCheckpointTransform.transform.position;
         _player.transform.rotation = _currentCheckpointTransform.transform.rotation;
+    }
+
+    private void OnDestroy()
+    {
+        /* Resets the instance to null when this is destroyed to allow for changing levels */
+        if (this == _instance)
+        {
+            _instance = null;
+        }
     }
 }

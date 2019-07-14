@@ -50,6 +50,7 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
+        /* Allows only a single instance of this script */
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);

@@ -32,10 +32,9 @@ public class Die : MonoBehaviour
 
     private void Start()
     {
-        //* Checkpoint script will instantiate the Level Manager prefab during Awake() if there is not already one in the scene */
-        if (FindObjectOfType<LevelManager>() != null)
+        if (LevelManager.Instance != null)  //checkpoint script will handle instantiating the Level Manager prefab during Awake() if there is not already one in the scene */
         {
-            _levelManager = FindObjectOfType<LevelManager>().gameObject.GetComponent<LevelManager>();
+            _levelManager = LevelManager.Instance;
         }
     }
 
