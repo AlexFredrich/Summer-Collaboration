@@ -11,24 +11,21 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
 
-    public KeyCode MNKForwardButton { get; private set; }
-    public KeyCode MNKBackwardButton { get; private set; }
-    public KeyCode MNKLeftButton { get; private set; }
-    public KeyCode MNKRightButton { get; private set; }
-    public KeyCode MNKJumpButton { get; private set; }
-    public KeyCode MNKSprintButton { get; private set; }
-    public KeyCode MNKPauseButton { get; private set; }
+    public KeyCode MNKForwardButton { get; set; }
+    public KeyCode MNKBackwardButton { get; set; }
+    public KeyCode MNKLeftButton { get; set; }
+    public KeyCode MNKRightButton { get; set; }
+    public KeyCode MNKJumpButton { get; set; }
+    public KeyCode MNKSprintButton { get; set; }
+    public KeyCode MNKPauseButton { get; set; }
 
-    public KeyCode MNKMouseXAxis { get; private set; }
-    public KeyCode MNKMouseYAxis { get; private set; }
-
-    private const string FORWARDKEYNAME = "forwardKey";
-    private const string BACKWARDKEYNAME = "backwardKey";
-    private const string LEFTKEYNAME = "leftKey";
-    private const string RIGHTKEYNAME = "rightKey";
-    private const string JUMPKEYNAME = "jumpKey";
-    private const string SPRINTKEYNAME = "sprintKey";
-    private const string PAUSEKEYNAME = "cancelKey";
+    private const string FORWARDKEYNAME = "ForwardKey";
+    private const string BACKWARDKEYNAME = "BackwardKey";
+    private const string LEFTKEYNAME = "LeftKey";
+    private const string RIGHTKEYNAME = "RightKey";
+    private const string JUMPKEYNAME = "JumpKey";
+    private const string SPRINTKEYNAME = "SprintKey";
+    private const string PAUSEKEYNAME = "PauseKey";
 
     #endregion
 
@@ -46,6 +43,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
 
+        // KeyCode list: https://docs.unity3d.com/ScriptReference/KeyCode.html
         MNKForwardButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(FORWARDKEYNAME, "W"));
         MNKBackwardButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(BACKWARDKEYNAME, "S"));
         MNKLeftButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(LEFTKEYNAME, "A"));

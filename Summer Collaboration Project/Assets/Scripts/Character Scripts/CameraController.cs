@@ -30,8 +30,6 @@ public class CameraController : MonoBehaviour
     private float _currentYRotation;
     private float _currentXRotation;
 
-    private bool _cursorIsLocked;
-
     public static CameraController Instance { get; private set; }
 
     private const string MOUSEXAXISNAME = "Mouse X";
@@ -81,11 +79,6 @@ public class CameraController : MonoBehaviour
 
             _firstPersonCamera = newCamera.GetComponent<Camera>();
         }
-
-        _cursorIsLocked = false;
-
-        /* Lock cursor (move to UI script eventually) */
-        ChangeCursorLock();
     }
     
     private void Update()
@@ -93,12 +86,6 @@ public class CameraController : MonoBehaviour
         GetLookInput();
         RotatePlayer();
         RotateCamera();
-
-        /* Unlock cursor (move to UI script eventually) */
-        if (Input.GetKeyDown(GameManager.Instance.MNKPauseButton))
-        {
-            ChangeCursorLock();
-        }
     }
 
     private void GetLookInput()
@@ -121,25 +108,6 @@ public class CameraController : MonoBehaviour
     {
         /* Rotate camera based on mouse vertical input */
         _firstPersonCamera.transform.localEulerAngles = new Vector3(_currentXRotation, 0, 0);   //MouseY needs to be set to inverse in project settings
-    }
-
-    //TODO: move this to UI script later on
-    private void ChangeCursorLock()
-    {
-        if (_cursorIsLocked)
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-
-            _cursorIsLocked = false;
-        }
-        else
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-
-            _cursorIsLocked = true;
-        }
     }
 
     private void OnDestroy()
