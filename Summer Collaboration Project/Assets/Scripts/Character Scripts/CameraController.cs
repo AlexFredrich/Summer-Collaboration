@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
+
 //This script goes on the player
 public class CameraController : MonoBehaviour
 {
@@ -9,14 +11,14 @@ public class CameraController : MonoBehaviour
 
     [SerializeField]
     [Range(10, 170)]
-    private int verticalLookAngleRange = 120;
+    private int _verticalLookAngleRange = 120;
 
     [SerializeField]
     [Range(0.0f, 10.0f)]
-    private float verticalLookSensitivity = 5.0f;       //x axis sensitivity
+    private float _verticalLookSensitivity = 5.0f;       //x axis sensitivity
     [SerializeField]
     [Range(0.0f, 10.0f)]
-    private float horizontalLookSensitivity = 3.0f;     //y axis sensitivity
+    private float _horizontalLookSensitivity = 3.0f;     //y axis sensitivity
 
     private Camera _firstPersonCamera;
 
@@ -28,7 +30,7 @@ public class CameraController : MonoBehaviour
     private float _currentYRotation;
     private float _currentXRotation;
 
-    private bool _cursorIsLocked;
+    public static CameraController Instance { get; private set; }
 
     private const string MOUSEXAXISNAME = "Mouse X";
     private const string MOUSEYAXISNAME = "Mouse Y";
@@ -39,11 +41,21 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
+        /* Allows only a single instance of this script */
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+
         _currentYRotation = 0.0f;
         _currentXRotation = 0.0f;
 
-        _minVerticalLookAngle = -(verticalLookAngleRange / 2);
-        _maxVerticalLookAngle = verticalLookAngleRange / 2;
+        _minVerticalLookAngle = -(_verticalLookAngleRange / 2);
+        _maxVerticalLookAngle = _verticalLookAngleRange / 2;
 
         /* Adds a new child GameObject with a Camera component and AudioListener if one cannot be found */
         if (this.gameObject.transform.Find(FIRSTPERSONCAMERANAME) != null)
@@ -67,11 +79,6 @@ public class CameraController : MonoBehaviour
 
             _firstPersonCamera = newCamera.GetComponent<Camera>();
         }
-
-        _cursorIsLocked = false;
-
-        /* Lock cursor (move to UI script eventually) */
-        ChangeCursorLock();
     }
     
     private void Update()
@@ -79,19 +86,13 @@ public class CameraController : MonoBehaviour
         GetLookInput();
         RotatePlayer();
         RotateCamera();
-
-        /* Unlock cursor (move to UI script eventually) */
-        if (Input.GetButton(CANCELBUTTONNAME))
-        {
-            ChangeCursorLock();
-        }
     }
 
     private void GetLookInput()
     {
         /* Get mouse input */
-        _currentYRotation += Input.GetAxis(MOUSEXAXISNAME) * verticalLookSensitivity;
-        _currentXRotation += Input.GetAxis(MOUSEYAXISNAME) * horizontalLookSensitivity;
+        _currentYRotation += Input.GetAxis(MOUSEXAXISNAME) * _verticalLookSensitivity;
+        _currentXRotation += Input.GetAxis(MOUSEYAXISNAME) * _horizontalLookSensitivity;
 
         /* Clamp vertical look angle */
         _currentXRotation = Mathf.Clamp(_currentXRotation, _minVerticalLookAngle, _maxVerticalLookAngle);
@@ -109,22 +110,12 @@ public class CameraController : MonoBehaviour
         _firstPersonCamera.transform.localEulerAngles = new Vector3(_currentXRotation, 0, 0);   //MouseY needs to be set to inverse in project settings
     }
 
-    //TODO: move this to UI script later on
-    private void ChangeCursorLock()
+    private void OnDestroy()
     {
-        if (_cursorIsLocked)
+        /* Resets the instance to null when this is destroyed to allow for respawning/changing levels */
+        if (this == Instance)
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-
-            _cursorIsLocked = false;
-        }
-        else
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-
-            _cursorIsLocked = true;
+            Instance = null;
         }
     }
 }
