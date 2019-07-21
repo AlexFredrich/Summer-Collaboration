@@ -23,6 +23,10 @@ public class TimeObject : MonoBehaviour, ITimeObject
     private int deltaPointLimit = 200;
 
     [SerializeField]
+    private bool _recordAllTransform;
+    public bool RecordAllTransform { get => _recordAllTransform; private set => _recordAllTransform = value; }
+
+    [SerializeField]
     private TimeState _previousTimeState;
     public TimeState PreviousTimeState { get => _previousTimeState; private set => _previousTimeState = value; }
 
@@ -164,7 +168,9 @@ public class TimeObject : MonoBehaviour, ITimeObject
             case TimeState.RECORDING:
                 {
 
-                    RecordDeltaChange();
+                    if (RecordAllTransform) RecordAll();
+                    else RecordDeltaChange();
+
                     if (thisRigidbody.velocity.magnitude == 0 && TimePointDelta.Count > deltaPointLimit) CullTimeDelta();
 
                     break;
@@ -195,6 +201,18 @@ public class TimeObject : MonoBehaviour, ITimeObject
             if (TimePointDelta.Count != 0) currentTimeIndex = TimePointDelta.Count - 1;
 
         }
+
+    }
+
+    public void RecordAll()
+    {
+
+        TimePoint newTimePoint = new TimePoint(this.transform);
+
+        TimePointDelta.Add(newTimePoint);
+        CurrentTimePoint = newTimePoint;
+
+        if (TimePointDelta.Count != 0) currentTimeIndex = TimePointDelta.Count - 1;
 
     }
 
@@ -264,10 +282,11 @@ public class TimeObject : MonoBehaviour, ITimeObject
     }
 
 
-    public void StartRecording(bool clearHistory = false)
+    public void StartRecording(bool clearHistory = false, bool recordingAll = false)
     {
 
         if (clearHistory) ClearTimeHistory();
+        RecordAllTransform = recordingAll;
         CurrentTimeState = TimeState.RECORDING;
 
     }
@@ -275,6 +294,7 @@ public class TimeObject : MonoBehaviour, ITimeObject
     public void EndRecording()
     {
 
+        RecordAllTransform = false;
         CurrentTimeState = TimeState.NORMAL;
 
     }
@@ -298,6 +318,10 @@ public class TimeObject : MonoBehaviour, ITimeObject
     // Interpolate between points A -> B
     private void Interpolate(int modifier)
     {
+
+        // Interpolation time eventually requires aggregation of transform delta
+        // replacing current mas lerp t with calculated t interpolation based on
+        // progression of aggregrated interpolation between points A and B
 
         if (interpolateTime < 0.001) interpolateTime += Time.deltaTime;
         else if (interpolateTime >= 0.001)
@@ -392,7 +416,7 @@ public class TimeObject : MonoBehaviour, ITimeObject
     }
 
 
-    public bool IsSimilarTimepoint(TimePoint A, TimePoint B)
+    public static bool IsSimilarTimepoint(TimePoint A, TimePoint B)
     {
 
         bool similar = true;

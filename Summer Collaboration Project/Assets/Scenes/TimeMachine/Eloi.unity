@@ -246,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customEditor: 0
   deltaPointLimit: 200
+  _recordAllTransform: 0
   _previousTimeState: 4
   _currentTimeState: 0
   _currentTimePoint:
