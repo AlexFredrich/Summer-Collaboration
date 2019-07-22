@@ -82,6 +82,7 @@ public class KeyRebindMenu : MonoBehaviour
         }
     }
 
+    //TODO: move to main menu script
     private void Update()
     {
         if (Input.GetKeyDown(GameManager.Instance.MNKPauseButton))
@@ -93,7 +94,8 @@ public class KeyRebindMenu : MonoBehaviour
             _keyRebindPanel.gameObject.SetActive(!_keyRebindPanel.gameObject.activeSelf);
         }
     }
-    
+
+    //TODO: move to main menu script
     private void ChangeCursorLock()
     {
         /* Toggles the cursor on and off */
@@ -118,7 +120,20 @@ public class KeyRebindMenu : MonoBehaviour
         /* When the key rebind assignment is in progress, the next key pressed is saved */
         _keyEvent = Event.current;
 
-        if (_keyEvent.isKey && _isWaitingForKey)
+        if (_keyEvent.shift && _isWaitingForKey)
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _newKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), "LeftShift");
+            }
+            else if (Input.GetKey(KeyCode.RightShift))
+            {
+                _newKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), "RightShift");
+            }
+
+            _isWaitingForKey = false;
+        }
+        else if (_keyEvent.isKey && _isWaitingForKey)
         {
             _newKey = _keyEvent.keyCode;
 
@@ -203,7 +218,7 @@ public class KeyRebindMenu : MonoBehaviour
     private IEnumerator WaitForKey()
     {
         /* Waits for the user to input a new key */
-        while (!_keyEvent.isKey)
+        while (_isWaitingForKey)
         {
             yield return null;
         }

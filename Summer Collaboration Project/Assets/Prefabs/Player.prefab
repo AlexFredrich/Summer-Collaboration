@@ -239,9 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6794afd0a7cc4449e8700f922b188c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 350
-  runSpeed: 600
-  jumpHeight: 300
+  _walkSpeed: 350
+  _runSpeed: 600
+  _jumpHeight: 300
 --- !u!114 &7710631290727512946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,9 +254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7463d1c05fdf9ea4c93c3b50c96c6316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalLookAngleRange: 120
-  verticalLookSensitivity: 5
-  horizontalLookSensitivity: 3
+  _verticalLookAngleRange: 120
+  _verticalLookSensitivity: 5
+  _horizontalLookSensitivity: 3
 --- !u!114 &5641157724013156369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,4 +269,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca1cf4f47ef6304da9ac099cd4c9983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnDelayInSeconds: 3
+  _respawnDelayInSeconds: 3
