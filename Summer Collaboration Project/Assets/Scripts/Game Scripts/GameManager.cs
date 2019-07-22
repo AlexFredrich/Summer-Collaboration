@@ -4,12 +4,16 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 
+//READ: STEPS 1-7 FOR ADDING A NEW INPUT WILL BE NUMBERED ON GAMEMANAGER.CS AND KEYREBINDMENU.CS
+
 //This script goes on an empty gameobject
 public class GameManager : MonoBehaviour
 {
     #region Variables
 
     public static GameManager Instance { get; private set; }
+
+    //STEP #1: ADD A NEW KEYCODE AND KEY NAME STRING FOR THE KEY
 
     public KeyCode MNKForwardButton { get; set; }
     public KeyCode MNKBackwardButton { get; set; }
@@ -43,7 +47,9 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
 
-        // KeyCode list: https://docs.unity3d.com/ScriptReference/KeyCode.html
+        //STEP #2: ASSIGN DEFAULT VALUE FOR KEY
+
+        // KeyCode list for default keys: https://docs.unity3d.com/ScriptReference/KeyCode.html
         MNKForwardButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(FORWARDKEYNAME, "W"));
         MNKBackwardButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(BACKWARDKEYNAME, "S"));
         MNKLeftButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(LEFTKEYNAME, "A"));
