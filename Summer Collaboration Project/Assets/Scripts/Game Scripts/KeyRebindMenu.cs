@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 [DisallowMultipleComponent]
 
+//READ: STEPS 1-7 FOR ADDING A NEW INPUT WILL BE NUMBERED ON GAMEMANAGER.CS AND KEYREBINDMENU.CS
+
 //This script goes on the menu canvas
 public class KeyRebindMenu : MonoBehaviour
 {
@@ -18,6 +20,8 @@ public class KeyRebindMenu : MonoBehaviour
     private bool _isWaitingForKey;
     private bool _cursorIsLocked;
 
+    //STEP #3: COPY THE KEY NAME STRING FROM GAMEMANAGER.CS
+
     private const string FORWARDKEYNAME = "ForwardKey";
     private const string BACKWARDKEYNAME = "BackwardKey";
     private const string LEFTKEYNAME = "LeftKey";
@@ -27,9 +31,7 @@ public class KeyRebindMenu : MonoBehaviour
     private const string PAUSEKEYNAME = "PauseKey";
 
     #endregion
-
-    //TODO: improve code
-    //TODO: add comments
+    
     private void Awake()
     {
         _keyRebindPanel = this.gameObject.transform.Find("Key Rebind Panel");
@@ -47,30 +49,32 @@ public class KeyRebindMenu : MonoBehaviour
     {
         Transform buttonGroup = _keyRebindPanel.gameObject.transform.Find("Buttons");
 
+        //STEP #4: ADD A CASE FOR THE NEW KEY
+
         for (int i = 0; i < buttonGroup.childCount; i++)
         {
             switch (buttonGroup.GetChild(i).name)
             {
                 case FORWARDKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = GameManager.Instance.MNKForwardButton.ToString();
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKForwardButton.ToString());
                     break;
                 case BACKWARDKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = GameManager.Instance.MNKBackwardButton.ToString();
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKBackwardButton.ToString());
                     break;
                 case LEFTKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = GameManager.Instance.MNKLeftButton.ToString();
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKLeftButton.ToString());
                     break;
                 case RIGHTKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = GameManager.Instance.MNKRightButton.ToString();
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKRightButton.ToString());
                     break;
                 case JUMPKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = GameManager.Instance.MNKJumpButton.ToString();
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKJumpButton.ToString());
                     break;
                 case SPRINTKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = GameManager.Instance.MNKSprintButton.ToString();
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKSprintButton.ToString());
                     break;
                 case PAUSEKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = GameManager.Instance.MNKPauseButton.ToString();
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKPauseButton.ToString());
                     break;
                 default:
                     break;
@@ -92,6 +96,7 @@ public class KeyRebindMenu : MonoBehaviour
     
     private void ChangeCursorLock()
     {
+        /* Toggles the cursor on and off */
         if (_cursorIsLocked)
         {
             Cursor.visible = true;
@@ -110,6 +115,7 @@ public class KeyRebindMenu : MonoBehaviour
 
     private void OnGUI()
     {
+        /* When the key rebind assignment is in progress, the next key pressed is saved */
         _keyEvent = Event.current;
 
         if (_keyEvent.isKey && _isWaitingForKey)
@@ -126,6 +132,7 @@ public class KeyRebindMenu : MonoBehaviour
     /// <param name="text"></param>
     public void SendText(Text text)
     {
+        /* Saves reference to current button's text */
         _buttonText = text;
     }
 
@@ -135,6 +142,7 @@ public class KeyRebindMenu : MonoBehaviour
     /// <param name="keyName"></param>
     public void StartKeyAssignment(string keyName)
     {
+        /* Starts key assignment if not already doing so */
         if (!_isWaitingForKey)
         {
             StartCoroutine(AssignKeyName(keyName));
@@ -147,41 +155,44 @@ public class KeyRebindMenu : MonoBehaviour
 
         yield return WaitForKey();
 
+        //STEP #5: ADD A CASE FOR THE NEW KEY
+
+        /* Updates the rebind menu button text and PlayerPrefs with the new key */
         switch (keyName)
         {
             case FORWARDKEYNAME:
                 GameManager.Instance.MNKForwardButton = _newKey;
-                _buttonText.text = GameManager.Instance.MNKForwardButton.ToString();
+                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKForwardButton.ToString());
                 PlayerPrefs.SetString(FORWARDKEYNAME, GameManager.Instance.MNKForwardButton.ToString());
                 break;
             case BACKWARDKEYNAME:
                 GameManager.Instance.MNKBackwardButton = _newKey;
-                _buttonText.text = GameManager.Instance.MNKBackwardButton.ToString();
+                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKBackwardButton.ToString());
                 PlayerPrefs.SetString(BACKWARDKEYNAME, GameManager.Instance.MNKBackwardButton.ToString());
                 break;
             case LEFTKEYNAME:
                 GameManager.Instance.MNKLeftButton = _newKey;
-                _buttonText.text = GameManager.Instance.MNKLeftButton.ToString();
+                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKLeftButton.ToString());
                 PlayerPrefs.SetString(LEFTKEYNAME, GameManager.Instance.MNKLeftButton.ToString());
                 break;
             case RIGHTKEYNAME:
                 GameManager.Instance.MNKRightButton = _newKey;
-                _buttonText.text = GameManager.Instance.MNKRightButton.ToString();
+                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKRightButton.ToString());
                 PlayerPrefs.SetString(RIGHTKEYNAME, GameManager.Instance.MNKRightButton.ToString());
                 break;
             case JUMPKEYNAME:
                 GameManager.Instance.MNKJumpButton = _newKey;
-                _buttonText.text = GameManager.Instance.MNKJumpButton.ToString();
+                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKJumpButton.ToString());
                 PlayerPrefs.SetString(JUMPKEYNAME, GameManager.Instance.MNKJumpButton.ToString());
                 break;
             case SPRINTKEYNAME:
                 GameManager.Instance.MNKSprintButton = _newKey;
-                _buttonText.text = GameManager.Instance.MNKSprintButton.ToString();
+                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKSprintButton.ToString());
                 PlayerPrefs.SetString(SPRINTKEYNAME, GameManager.Instance.MNKSprintButton.ToString());
                 break;
             case PAUSEKEYNAME:
                 GameManager.Instance.MNKPauseButton = _newKey;
-                _buttonText.text = GameManager.Instance.MNKPauseButton.ToString();
+                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKPauseButton.ToString());
                 PlayerPrefs.SetString(PAUSEKEYNAME, GameManager.Instance.MNKPauseButton.ToString());
                 break;
             default:
@@ -191,9 +202,19 @@ public class KeyRebindMenu : MonoBehaviour
 
     private IEnumerator WaitForKey()
     {
+        /* Waits for the user to input a new key */
         while (!_keyEvent.isKey)
         {
             yield return null;
         }
     }
+
+    private string SplitPascalCase(string originalString)
+    {
+        /* Adds a space before capitalized letters of Pascal case strings */
+        return System.Text.RegularExpressions.Regex.Replace(originalString, "([A-Z])", " $1", System.Text.RegularExpressions.RegexOptions.Compiled).Trim();
+    }
+
+    //STEP #6: ADD A NEW BUTTON AND TEXT TO THE KEY REBIND UI PANEL (THE BUTTON MUST BE NAMED THE SAME AS THE KEY NAME STRING CONSTANT - E.G. ForwardKey)
+    //STEP #7: SET UP BUTTON ONCLICK() EVENTS FOR KEYREBINDMENU.SENDTEXT (TEXT SHOULD BE THAT BUTTON'S TEXT) AND KEYREBINDMENU.STARTKEYASSIGNMENT (STRING SHOULD BE THAT BUTTON'S NAME / KEY NAME STRING CONSTANT - E.G. ForwardKey)
 }
