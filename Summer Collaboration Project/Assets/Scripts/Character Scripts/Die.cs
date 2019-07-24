@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
+
 //This script goes on the player
 public class Die : MonoBehaviour
 {
@@ -9,31 +11,19 @@ public class Die : MonoBehaviour
 
     [SerializeField]
     [Range(0.0f, 10.0f)]
-    private float respawnDelayInSeconds = 3.0f;
+    private float _respawnDelayInSeconds = 3.0f;
 
     private LevelManager _levelManager;
-
-    private bool _playerIsDying;
-    public bool PlayerIsDying
-    {
-        get
-        {
-            return _playerIsDying;
-        }
-        private set
-        {
-            _playerIsDying = value;
-        }
-    }
+    
+    public bool PlayerIsDying { get; private set; }
 
     #endregion
 
     private void Start()
     {
-        //* Checkpoint script will instantiate the Level Manager prefab during Awake() if there is not already one in the scene */
-        if (FindObjectOfType<LevelManager>() != null)
+        if (LevelManager.Instance != null)  //checkpoint script will handle instantiating the Level Manager prefab during Awake() if there is not already one in the scene */
         {
-            _levelManager = FindObjectOfType<LevelManager>().gameObject.GetComponent<LevelManager>();
+            _levelManager = LevelManager.Instance;
         }
     }
 
@@ -47,7 +37,7 @@ public class Die : MonoBehaviour
 
         //TODO: death screen or whatever
 
-        yield return new WaitForSecondsRealtime(respawnDelayInSeconds);
+        yield return new WaitForSecondsRealtime(_respawnDelayInSeconds);
 
         _levelManager.RespawnPlayer();
 
