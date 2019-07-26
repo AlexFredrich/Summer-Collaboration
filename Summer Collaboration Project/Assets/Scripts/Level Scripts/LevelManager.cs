@@ -11,9 +11,9 @@ public class LevelManager : MonoBehaviour
     
     [SerializeField]
     private Transform _firstCheckpoint;
-
-    private Transform _currentCheckpointTransform;
+    
     private GameObject _player;
+    private Transform _currentCheckpointTransform;
 
     public static LevelManager Instance { get; private set; }
 
@@ -34,6 +34,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        _player = CharacterController.Instance.gameObject;
+
         /* Assigns the first checkpoint of the game */
         if (_firstCheckpoint != null)
         {
@@ -43,8 +45,6 @@ public class LevelManager : MonoBehaviour
         {
             _currentCheckpointTransform = _player.transform;  //makes the first checkpoint the player's starting position if it wasn't set in the editor
         }
-
-        _player = CharacterController.Instance.gameObject;
     }
 
     /// <summary>
