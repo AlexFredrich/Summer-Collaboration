@@ -61,7 +61,7 @@ public class ActivateObject : MonoBehaviour
         {
             if (Input.GetButtonDown("Freeze"))
             {
-                if (TimeObjectManager.FrozenObjects.Contains(objectToFreeze))
+                if (objectToFreeze.CurrentTimeState == TimeState.FROZEN)
                 {
                     objectToFreeze.UnfreezeTime();
                 }
@@ -69,6 +69,16 @@ public class ActivateObject : MonoBehaviour
                 {
                     objectToFreeze.FreezeTime();
                 }
+                //if (TimeObjectManager.FrozenObjects.Contains(objectToFreeze))
+                //{
+                //    objectToFreeze.UnfreezeTime();
+                //    TimeObjectManager.FrozenObjects.Remove(objectToFreeze);
+                //}
+                //else
+                //{
+                //    objectToFreeze.FreezeTime();
+                //    TimeObjectManager.FrozenObjects.Add(objectToFreeze);
+                //}
                 
             }
         }
