@@ -156,64 +156,6 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    #region Using Unity Input Manager (old way)
-
-    //private void GetMovementInput()
-    //{
-    //    float horizontalInput = 0.0f;
-    //    float verticalInput = 0.0f;
-
-    //    /* Get directional input if the player can move in that direction*/
-    //    if (CanMoveInDirection(this.gameObject.transform.right * Input.GetAxisRaw(HORIZONTALAXISNAME)))     //currently not requiring the player to be on the ground so they can direct their flight in mid-air
-    //    {
-    //        horizontalInput = Input.GetAxisRaw(HORIZONTALAXISNAME);
-    //    }
-
-    //    if (CanMoveInDirection(this.gameObject.transform.forward * Input.GetAxisRaw(VERTICALAXISNAME)))
-    //    {
-    //        verticalInput = Input.GetAxisRaw(VERTICALAXISNAME);
-    //    }
-
-    //    /* Create vector 3 for x and z velocity */
-    //    _movementDirection = ((horizontalInput * transform.right) + (verticalInput * transform.forward)).normalized;
-    //}
-
-    //private void ChangeSpeed()
-    //{
-    //    /* Makes the player move faster when sprint is held down and the player is on the ground */
-    //    if (Input.GetButton(SPRINTBUTTONNAME) && IsOnGround())
-    //    {
-    //        _currentSpeed = _runSpeed;
-    //    }
-    //    else
-    //    {
-    //        _currentSpeed = _walkSpeed;
-    //    }
-    //}
-
-    //private void MovePlayer()
-    //{
-    //    /* Get current y velocity */
-    //    Vector3 yVelocity = new Vector3(0, _rb.velocity.y, 0);
-
-    //    /* Move player based on velocity from directional input */
-    //    _rb.velocity = _movementDirection * _currentSpeed * Time.deltaTime;
-
-    //    /* Add y velocity back in to desired movement direction */
-    //    _rb.velocity += yVelocity;      //since _movementDirection only has values for x and z velocity we need to add y velocity to not constantly set vertical movement to 0 every fixed update
-    //}
-
-    //private void Jump()
-    //{
-    //    /* Makes the player jump when the jump button is pressed and the player is on the ground */
-    //    if (Input.GetButtonDown(JUMPBUTTONNAME) && IsOnGround())
-    //    {
-    //        _rb.velocity = new Vector3(0, _jumpHeight * Time.deltaTime, 0);
-    //    }
-    //}
-
-    #endregion
-
     private bool CanMoveInDirection(Vector3 direction)
     {
         float distanceToPoints = (_collider.height / 2) - _collider.radius;

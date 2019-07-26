@@ -19,7 +19,7 @@ public class Checkpoint : MonoBehaviour
     private void Awake()
     {
         /* Instantiates the Level Manager prefab if one cannot be found */
-        if (FindObjectOfType<LevelManager>() != null)   //have to use FindObjectOfType because LevelManager.Instance might not be set yet during Awake and Die.Start() requires LevelManager to be instantiated during Awake
+        if (FindObjectOfType<LevelManager>() != null)   //have to use FindObjectOfType because LevelManager.Instance might not be set yet during Awake() and Die.Start() requires LevelManager to be instantiated during Awake
         {
             _levelManager = FindObjectOfType<LevelManager>().gameObject.GetComponent<LevelManager>();
         }

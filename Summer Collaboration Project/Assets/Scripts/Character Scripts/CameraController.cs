@@ -32,8 +32,8 @@ public class CameraController : MonoBehaviour
 
     public static CameraController Instance { get; private set; }
 
-    private const string MOUSEXAXISNAME = "Look X";
-    private const string MOUSEYAXISNAME = "Look Y";
+    private const string LOOKXAXISNAME = "Look X";
+    private const string LOOKYAXISNAME = "Look Y";
     private const string FIRSTPERSONCAMERANAME = "Main Camera";
 
     #endregion
@@ -83,30 +83,30 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         GetLookInput();
-        RotatePlayer();
-        RotateCamera();
+        RotatePlayerHorizontally();
+        RotateCameraVertically();
     }
 
     private void GetLookInput()
     {
         /* Get mouse input */
-        _currentYRotation += Input.GetAxis(MOUSEXAXISNAME) * _verticalLookSensitivity;
-        _currentXRotation += Input.GetAxis(MOUSEYAXISNAME) * _horizontalLookSensitivity;
+        _currentYRotation += Input.GetAxis(LOOKXAXISNAME) * _verticalLookSensitivity;
+        _currentXRotation += Input.GetAxis(LOOKYAXISNAME) * _horizontalLookSensitivity;
 
         /* Clamp vertical look angle */
         _currentXRotation = Mathf.Clamp(_currentXRotation, _minVerticalLookAngle, _maxVerticalLookAngle);
     }
 
-    private void RotatePlayer()
+    private void RotatePlayerHorizontally()
     {
-        /* Rotate player based on mouse horizontal input */
+        /* Rotate player based on horizontal input */
         this.gameObject.transform.localEulerAngles = new Vector3(0, _currentYRotation, 0);
     }
 
-    private void RotateCamera()
+    private void RotateCameraVertically()
     {
-        /* Rotate camera based on mouse vertical input */
-        _firstPersonCamera.transform.localEulerAngles = new Vector3(_currentXRotation, 0, 0);   //MouseY needs to be set to inverse in project settings
+        /* Rotate camera based on vertical input */
+        _firstPersonCamera.transform.localEulerAngles = new Vector3(_currentXRotation, 0, 0);   //LookY for the mouse (not the controller) needs to be set to inverse in project settings
     }
 
     private void OnDestroy()

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
+
 //This script goes everything that can kill the player
 public class KillPlayer : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class KillPlayer : MonoBehaviour
         /* Kills the player when this touches them */
         if (other.gameObject.tag == PLAYERTAGNAME)
         {
-            Die death = other.GetComponent<Die>();
+            Die death = other.gameObject.GetComponent<Die>();
 
             if (!death.PlayerIsDying)
             {
