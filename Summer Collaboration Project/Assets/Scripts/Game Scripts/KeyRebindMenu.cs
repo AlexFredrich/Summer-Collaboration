@@ -124,11 +124,11 @@ public class KeyRebindMenu : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                _newKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), "LeftShift");
+                _newKey = KeyCode.LeftShift;
             }
             else if (Input.GetKey(KeyCode.RightShift))
             {
-                _newKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), "RightShift");
+                _newKey = KeyCode.RightShift;
             }
 
             _isWaitingForKey = false;
@@ -138,6 +138,129 @@ public class KeyRebindMenu : MonoBehaviour
             _newKey = _keyEvent.keyCode;
 
             _isWaitingForKey = false;
+        }
+        else if (_isWaitingForKey)  //need to individually check for each controller button if there is no keyboard input
+        {
+            if (Input.GetKey(KeyCode.JoystickButton0))
+            {
+                _newKey = KeyCode.JoystickButton0;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton1))
+            {
+                _newKey = KeyCode.JoystickButton1;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton2))
+            {
+                _newKey = KeyCode.JoystickButton2;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton3))
+            {
+                _newKey = KeyCode.JoystickButton3;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton4))
+            {
+                _newKey = KeyCode.JoystickButton4;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton5))
+            {
+                _newKey = KeyCode.JoystickButton5;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton6))
+            {
+                _newKey = KeyCode.JoystickButton6;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton7))
+            {
+                _newKey = KeyCode.JoystickButton7;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton8))
+            {
+                _newKey = KeyCode.JoystickButton8;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton9))
+            {
+                _newKey = KeyCode.JoystickButton9;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton10))
+            {
+                _newKey = KeyCode.JoystickButton10;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton11))
+            {
+                _newKey = KeyCode.JoystickButton11;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton12))
+            {
+                _newKey = KeyCode.JoystickButton12;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton13))
+            {
+                _newKey = KeyCode.JoystickButton13;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton14))
+            {
+                _newKey = KeyCode.JoystickButton14;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton15))
+            {
+                _newKey = KeyCode.JoystickButton15;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton16))
+            {
+                _newKey = KeyCode.JoystickButton16;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton17))
+            {
+                _newKey = KeyCode.JoystickButton17;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton18))
+            {
+                _newKey = KeyCode.JoystickButton18;
+
+                _isWaitingForKey = false;
+            }
+            else if (Input.GetKey(KeyCode.JoystickButton19))
+            {
+                _newKey = KeyCode.JoystickButton19;
+
+                _isWaitingForKey = false;
+            }
         }
     }
 
