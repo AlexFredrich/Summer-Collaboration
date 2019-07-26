@@ -31,10 +31,8 @@ public class CharacterController : MonoBehaviour
 
     private const int MINRUNNINGEXTRASPEED = 150;
 
-    //private const string HORIZONTALAXISNAME = "Horizontal";
-    //private const string VERTICALAXISNAME = "Vertical";
-    //private const string SPRINTBUTTONNAME = "Sprint";
-    //private const string JUMPBUTTONNAME = "Jump";
+    private const string CONTROLLERHORIZONTALAXISNAME = "Controller Horizontal";
+    private const string CONTROLLERVERTICALAXISNAME = "Controller Vertical";
     private const string WALLTAGNAME = "Wall";
     private const string GROUNDTAGNAME = "Ground";
 
@@ -72,37 +70,51 @@ public class CharacterController : MonoBehaviour
 
     private void GetMovementInput()
     {
-        int verticalInput = 0;
-        int horizontalInput = 0;
+        float verticalInput = 0.0f;
+        float horizontalInput = 0.0f;
 
         /* Takes directional input if the player can move in that direction (currently not requiring the player to be on the ground so they can direct their flight in mid-air) */
-        if (Input.GetKey(GameManager.Instance.MNKForwardButton))
+        if (Input.GetKey(GameManager.Instance.ForwardButton))
         {
             if (CanMoveInDirection(this.gameObject.transform.forward * 1))
             {
-                verticalInput = 1;
+                verticalInput = 1.0f;
             }
         }
-        else if (Input.GetKey(GameManager.Instance.MNKBackwardButton))
+        else if (Input.GetKey(GameManager.Instance.BackwardButton))
         {
             if (CanMoveInDirection(this.gameObject.transform.forward * -1))
             {
-                verticalInput = -1;
+                verticalInput = -1.0f;
             }
         }
 
-        if (Input.GetKey(GameManager.Instance.MNKLeftButton))
+        if (Input.GetKey(GameManager.Instance.LeftButton))
         {
             if (CanMoveInDirection(this.gameObject.transform.right * -1))
             {
-                horizontalInput = -1;
+                horizontalInput = -1.0f;
             }
         }
-        else if (Input.GetKey(GameManager.Instance.MNKRightButton))
+        else if (Input.GetKey(GameManager.Instance.RightButton))
         {
             if (CanMoveInDirection(this.gameObject.transform.right * 1))
             {
-                horizontalInput = 1;
+                horizontalInput = 1.0f;
+            }
+        }
+
+        /* Looks for controller input if there is no keyboard input */
+        if (verticalInput == 0 && horizontalInput == 0)
+        {
+            if (CanMoveInDirection(this.gameObject.transform.right * Input.GetAxisRaw(CONTROLLERHORIZONTALAXISNAME)))
+            {
+                horizontalInput = Input.GetAxisRaw(CONTROLLERHORIZONTALAXISNAME);
+            }
+
+            if (CanMoveInDirection(this.gameObject.transform.forward * Input.GetAxisRaw(CONTROLLERVERTICALAXISNAME)))
+            {
+                verticalInput = Input.GetAxisRaw(CONTROLLERVERTICALAXISNAME);
             }
         }
 
@@ -113,7 +125,7 @@ public class CharacterController : MonoBehaviour
     private void ChangeSpeed()
     {
         /* Makes the player move faster when sprint is held down and the player is on the ground */
-        if (Input.GetKey(GameManager.Instance.MNKSprintButton) && IsOnGround())
+        if (Input.GetKey(GameManager.Instance.SprintButton) && IsOnGround())
         {
             _currentSpeed = _runSpeed;
         }
@@ -132,13 +144,13 @@ public class CharacterController : MonoBehaviour
         _rb.velocity = _movementDirection * _currentSpeed * Time.deltaTime;
 
         /* Add y velocity back in to desired movement direction */
-        _rb.velocity += yVelocity;      //since _movementDirection only has values for x and z velocity we need to add y velocity to not constantly set vertical movement to 0 every fixed update
+        _rb.velocity += yVelocity;      //since _movementDirection only has values for x and z velocity, we need to add y velocity to not constantly set vertical movement to 0 every fixed update
     }
 
     private void Jump()
     {
         /* Makes the player jump when the jump button is pressed and the player is on the ground */
-        if (Input.GetKeyDown(GameManager.Instance.MNKJumpButton) && IsOnGround())
+        if (Input.GetKeyDown(GameManager.Instance.JumpButton) && IsOnGround())
         {
             _rb.velocity = new Vector3(0, _jumpHeight * Time.deltaTime, 0);
         }

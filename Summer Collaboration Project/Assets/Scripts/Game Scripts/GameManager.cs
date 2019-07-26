@@ -15,13 +15,13 @@ public class GameManager : MonoBehaviour
 
     //STEP #1: ADD A NEW KEYCODE AND KEY NAME STRING FOR THE KEY
 
-    public KeyCode MNKForwardButton { get; set; }
-    public KeyCode MNKBackwardButton { get; set; }
-    public KeyCode MNKLeftButton { get; set; }
-    public KeyCode MNKRightButton { get; set; }
-    public KeyCode MNKJumpButton { get; set; }
-    public KeyCode MNKSprintButton { get; set; }
-    public KeyCode MNKPauseButton { get; set; }
+    public KeyCode ForwardButton { get; set; }
+    public KeyCode BackwardButton { get; set; }
+    public KeyCode LeftButton { get; set; }
+    public KeyCode RightButton { get; set; }
+    public KeyCode JumpButton { get; set; }
+    public KeyCode SprintButton { get; set; }
+    public KeyCode PauseButton { get; set; }
 
     private const string FORWARDKEYNAME = "ForwardKey";
     private const string BACKWARDKEYNAME = "BackwardKey";
@@ -50,12 +50,12 @@ public class GameManager : MonoBehaviour
         //STEP #2: ASSIGN DEFAULT VALUE FOR KEY
 
         // KeyCode list for default keys: https://docs.unity3d.com/ScriptReference/KeyCode.html
-        MNKForwardButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(FORWARDKEYNAME, "W"));
-        MNKBackwardButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(BACKWARDKEYNAME, "S"));
-        MNKLeftButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(LEFTKEYNAME, "A"));
-        MNKRightButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(RIGHTKEYNAME, "D"));
-        MNKJumpButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(JUMPKEYNAME, "Space"));
-        MNKSprintButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(SPRINTKEYNAME, "LeftShift"));
-        MNKPauseButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(PAUSEKEYNAME, "Escape"));
+        ForwardButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(FORWARDKEYNAME, "W"));
+        BackwardButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(BACKWARDKEYNAME, "S"));
+        LeftButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(LEFTKEYNAME, "A"));
+        RightButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(RIGHTKEYNAME, "D"));
+        JumpButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(JUMPKEYNAME, "Space"));
+        SprintButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(SPRINTKEYNAME, "LeftShift"));
+        PauseButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(PAUSEKEYNAME, "Escape"));
     }
 }
