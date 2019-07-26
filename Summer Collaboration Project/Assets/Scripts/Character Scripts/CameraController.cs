@@ -32,9 +32,8 @@ public class CameraController : MonoBehaviour
 
     public static CameraController Instance { get; private set; }
 
-    private const string MOUSEXAXISNAME = "Mouse X";
-    private const string MOUSEYAXISNAME = "Mouse Y";
-    private const string CANCELBUTTONNAME = "Cancel";
+    private const string MOUSEXAXISNAME = "Look X";
+    private const string MOUSEYAXISNAME = "Look Y";
     private const string FIRSTPERSONCAMERANAME = "Main Camera";
 
     #endregion

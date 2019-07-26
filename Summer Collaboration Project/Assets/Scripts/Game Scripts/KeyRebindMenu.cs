@@ -56,25 +56,25 @@ public class KeyRebindMenu : MonoBehaviour
             switch (buttonGroup.GetChild(i).name)
             {
                 case FORWARDKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKForwardButton.ToString());
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.ForwardButton.ToString());
                     break;
                 case BACKWARDKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKBackwardButton.ToString());
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.BackwardButton.ToString());
                     break;
                 case LEFTKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKLeftButton.ToString());
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.LeftButton.ToString());
                     break;
                 case RIGHTKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKRightButton.ToString());
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.RightButton.ToString());
                     break;
                 case JUMPKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKJumpButton.ToString());
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.JumpButton.ToString());
                     break;
                 case SPRINTKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKSprintButton.ToString());
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.SprintButton.ToString());
                     break;
                 case PAUSEKEYNAME:
-                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.MNKPauseButton.ToString());
+                    buttonGroup.GetChild(i).GetComponentInChildren<Text>().text = SplitPascalCase(GameManager.Instance.PauseButton.ToString());
                     break;
                 default:
                     break;
@@ -85,7 +85,7 @@ public class KeyRebindMenu : MonoBehaviour
     //TODO: move to main menu script
     private void Update()
     {
-        if (Input.GetKeyDown(GameManager.Instance.MNKPauseButton))
+        if (Input.GetKeyDown(GameManager.Instance.PauseButton))
         {
             /* Toggle cursor */
             ChangeCursorLock();
@@ -176,39 +176,39 @@ public class KeyRebindMenu : MonoBehaviour
         switch (keyName)
         {
             case FORWARDKEYNAME:
-                GameManager.Instance.MNKForwardButton = _newKey;
-                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKForwardButton.ToString());
-                PlayerPrefs.SetString(FORWARDKEYNAME, GameManager.Instance.MNKForwardButton.ToString());
+                GameManager.Instance.ForwardButton = _newKey;
+                _buttonText.text = SplitPascalCase(GameManager.Instance.ForwardButton.ToString());
+                PlayerPrefs.SetString(FORWARDKEYNAME, GameManager.Instance.ForwardButton.ToString());
                 break;
             case BACKWARDKEYNAME:
-                GameManager.Instance.MNKBackwardButton = _newKey;
-                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKBackwardButton.ToString());
-                PlayerPrefs.SetString(BACKWARDKEYNAME, GameManager.Instance.MNKBackwardButton.ToString());
+                GameManager.Instance.BackwardButton = _newKey;
+                _buttonText.text = SplitPascalCase(GameManager.Instance.BackwardButton.ToString());
+                PlayerPrefs.SetString(BACKWARDKEYNAME, GameManager.Instance.BackwardButton.ToString());
                 break;
             case LEFTKEYNAME:
-                GameManager.Instance.MNKLeftButton = _newKey;
-                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKLeftButton.ToString());
-                PlayerPrefs.SetString(LEFTKEYNAME, GameManager.Instance.MNKLeftButton.ToString());
+                GameManager.Instance.LeftButton = _newKey;
+                _buttonText.text = SplitPascalCase(GameManager.Instance.LeftButton.ToString());
+                PlayerPrefs.SetString(LEFTKEYNAME, GameManager.Instance.LeftButton.ToString());
                 break;
             case RIGHTKEYNAME:
-                GameManager.Instance.MNKRightButton = _newKey;
-                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKRightButton.ToString());
-                PlayerPrefs.SetString(RIGHTKEYNAME, GameManager.Instance.MNKRightButton.ToString());
+                GameManager.Instance.RightButton = _newKey;
+                _buttonText.text = SplitPascalCase(GameManager.Instance.RightButton.ToString());
+                PlayerPrefs.SetString(RIGHTKEYNAME, GameManager.Instance.RightButton.ToString());
                 break;
             case JUMPKEYNAME:
-                GameManager.Instance.MNKJumpButton = _newKey;
-                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKJumpButton.ToString());
-                PlayerPrefs.SetString(JUMPKEYNAME, GameManager.Instance.MNKJumpButton.ToString());
+                GameManager.Instance.JumpButton = _newKey;
+                _buttonText.text = SplitPascalCase(GameManager.Instance.JumpButton.ToString());
+                PlayerPrefs.SetString(JUMPKEYNAME, GameManager.Instance.JumpButton.ToString());
                 break;
             case SPRINTKEYNAME:
-                GameManager.Instance.MNKSprintButton = _newKey;
-                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKSprintButton.ToString());
-                PlayerPrefs.SetString(SPRINTKEYNAME, GameManager.Instance.MNKSprintButton.ToString());
+                GameManager.Instance.SprintButton = _newKey;
+                _buttonText.text = SplitPascalCase(GameManager.Instance.SprintButton.ToString());
+                PlayerPrefs.SetString(SPRINTKEYNAME, GameManager.Instance.SprintButton.ToString());
                 break;
             case PAUSEKEYNAME:
-                GameManager.Instance.MNKPauseButton = _newKey;
-                _buttonText.text = SplitPascalCase(GameManager.Instance.MNKPauseButton.ToString());
-                PlayerPrefs.SetString(PAUSEKEYNAME, GameManager.Instance.MNKPauseButton.ToString());
+                GameManager.Instance.PauseButton = _newKey;
+                _buttonText.text = SplitPascalCase(GameManager.Instance.PauseButton.ToString());
+                PlayerPrefs.SetString(PAUSEKEYNAME, GameManager.Instance.PauseButton.ToString());
                 break;
             default:
                 break;
