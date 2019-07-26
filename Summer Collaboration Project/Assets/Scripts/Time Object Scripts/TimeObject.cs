@@ -79,7 +79,7 @@ public class TimeObject : MonoBehaviour, ITimeObject
     {
 
         // Prevent null list
-        TimePointDelta = new List<TimePoint>();
+        if (TimePointDelta == null) TimePointDelta = new List<TimePoint>();
 
         if (this.gameObject.GetComponent<Rigidbody>()) thisRigidbody = this.gameObject.GetComponent<Rigidbody>();
         else
