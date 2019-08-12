@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="132">
+	<RootPaths>
+		<ProjectRoot>C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="534561221" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\MainSoundBank</ObjectPath>
+			<ShortName>MainSoundBank</ShortName>
+			<Path>MainSoundBank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3386623447" Name="Play_BasementAmb" ObjectPath="\Events\Default Work Unit\Play_BasementAmb"/>
+				<Event Id="534090511" Name="Play_MetalStuff" ObjectPath="\Events\Default Work Unit\Play_MetalStuff" MaxAttenuation="100.000000"/>
+				<Event Id="673677130" Name="Play_OfficeAmb" ObjectPath="\Events\Default Work Unit\Play_OfficeAmb"/>
+				<Event Id="1900208825" Name="Play_TempVO" ObjectPath="\Events\Default Work Unit\Play_TempVO"/>
+				<Event Id="2662937473" Name="Play_WarehouseAmb" ObjectPath="\Events\Default Work Unit\Play_WarehouseAmb"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="65395503" Language="SFX">
+					<ShortName>SQUEAK_Metal_Hinge_04_mono.wav</ShortName>
+					<Path>SFX\SQUEAK_Metal_Hinge_04_mono_8956FC97.wem</Path>
+				</File>
+				<File Id="127367576" Language="SFX">
+					<ShortName>Synth Ambience LOOP.wav</ShortName>
+					<Path>SFX\Synth Ambience LOOP_8956FC97.wem</Path>
+				</File>
+				<File Id="359980212" Language="SFX">
+					<ShortName>99S LT Ambience Underwater - Iron Sewer.wav</ShortName>
+					<Path>SFX\99S LT Ambience Underwater - Iron Sewer_8956FC97.wem</Path>
+				</File>
+				<File Id="466585736" Language="SFX">
+					<ShortName>ESC VO Temp.wav</ShortName>
+					<Path>SFX\ESC VO Temp_56D34C19.wem</Path>
+				</File>
+				<File Id="778324750" Language="SFX">
+					<ShortName>hallway_of_fear_sub_air_hollow_01_loop.wav</ShortName>
+					<Path>SFX\hallway_of_fear_sub_air_hollow_01_loop_8956FC97.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

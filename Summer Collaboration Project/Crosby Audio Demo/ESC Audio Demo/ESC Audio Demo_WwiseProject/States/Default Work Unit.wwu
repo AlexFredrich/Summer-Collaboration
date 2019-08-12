@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{2A159333-F6DA-4100-929A-1B55B9220D94}" SchemaVersion="89">
+	<States>
+		<WorkUnit Name="Default Work Unit" ID="{2A159333-F6DA-4100-929A-1B55B9220D94}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="InBasement" ID="{7D6E04DF-655E-4DBD-8EC9-63EFA2A0FFA9}">
+					<PropertyList>
+						<Property Name="DefaultTransitionTime" Type="Real64" Value="1.5"/>
+					</PropertyList>
+					<ChildrenList>
+						<State Name="None" ID="{33260A21-EB86-4991-860C-03AE3E5307F7}"/>
+						<State Name="InBasement_True" ID="{A8C43140-7251-46B2-A3F4-2F812D4FA005}"/>
+						<State Name="InBasement_False" ID="{43F1BE2C-A4E0-4366-A454-8731F6472FBF}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="InBasement_True" ID="{A8C43140-7251-46B2-A3F4-2F812D4FA005}"/>
+							<EndState Name="InBasement_False" ID="{43F1BE2C-A4E0-4366-A454-8731F6472FBF}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="InBasement_False" ID="{43F1BE2C-A4E0-4366-A454-8731F6472FBF}"/>
+							<EndState Name="InBasement_True" ID="{A8C43140-7251-46B2-A3F4-2F812D4FA005}"/>
+							<Time>1.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
+				<StateGroup Name="InWarehouse" ID="{EA730E20-7DDB-4531-B0EF-0071E42B5902}">
+					<ChildrenList>
+						<State Name="None" ID="{41FA31CE-F18E-4BFD-9279-2048DC562A5D}"/>
+						<State Name="InWarehouse_False" ID="{64E66C17-5AB0-41A9-8548-9E7A2A145ADF}"/>
+						<State Name="InWarehouse_Downstairs" ID="{06E08330-4C86-4E33-BD5F-FEE7B9AAE73C}"/>
+						<State Name="InWarehouse_Upstairs" ID="{5E2796CE-0298-4C60-8F76-0544D0FA7F3E}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="InWarehouse_Downstairs" ID="{06E08330-4C86-4E33-BD5F-FEE7B9AAE73C}"/>
+							<EndState Name="InWarehouse_False" ID="{64E66C17-5AB0-41A9-8548-9E7A2A145ADF}"/>
+							<Time>3.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="InWarehouse_False" ID="{64E66C17-5AB0-41A9-8548-9E7A2A145ADF}"/>
+							<EndState Name="InWarehouse_Downstairs" ID="{06E08330-4C86-4E33-BD5F-FEE7B9AAE73C}"/>
+							<Time>1.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="InWarehouse_Downstairs" ID="{06E08330-4C86-4E33-BD5F-FEE7B9AAE73C}"/>
+							<EndState Name="InWarehouse_Upstairs" ID="{5E2796CE-0298-4C60-8F76-0544D0FA7F3E}"/>
+							<Time>7</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="InWarehouse_Upstairs" ID="{5E2796CE-0298-4C60-8F76-0544D0FA7F3E}"/>
+							<EndState Name="InWarehouse_Downstairs" ID="{06E08330-4C86-4E33-BD5F-FEE7B9AAE73C}"/>
+							<Time>7</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="InWarehouse_Upstairs" ID="{5E2796CE-0298-4C60-8F76-0544D0FA7F3E}"/>
+							<EndState Name="InWarehouse_False" ID="{64E66C17-5AB0-41A9-8548-9E7A2A145ADF}"/>
+							<Time>3.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="InWarehouse_False" ID="{64E66C17-5AB0-41A9-8548-9E7A2A145ADF}"/>
+							<EndState Name="InWarehouse_Upstairs" ID="{5E2796CE-0298-4C60-8F76-0544D0FA7F3E}"/>
+							<Time>1.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
+				<StateGroup Name="InOffice" ID="{D32FAF8F-84B2-4281-9EE1-7E83B6BB6BF9}">
+					<ChildrenList>
+						<State Name="None" ID="{F3AF52A5-C188-42A6-AFB7-F250590EC640}"/>
+						<State Name="InOffice_False" ID="{1C202E90-BE0D-431C-8BE2-3A82A4A28BEB}"/>
+						<State Name="InOffice_True" ID="{6BE05F6A-2726-482D-858D-91441AFD4622}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="InOffice_False" ID="{1C202E90-BE0D-431C-8BE2-3A82A4A28BEB}"/>
+							<EndState Name="InOffice_True" ID="{6BE05F6A-2726-482D-858D-91441AFD4622}"/>
+							<Time>2.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="InOffice_True" ID="{6BE05F6A-2726-482D-858D-91441AFD4622}"/>
+							<EndState Name="InOffice_False" ID="{1C202E90-BE0D-431C-8BE2-3A82A4A28BEB}"/>
+							<Time>3</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</States>
+</WwiseDocument>

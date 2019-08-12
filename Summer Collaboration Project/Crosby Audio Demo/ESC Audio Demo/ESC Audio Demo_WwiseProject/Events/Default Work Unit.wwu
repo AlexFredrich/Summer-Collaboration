@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{44859AEB-C2EB-4D0A-8875-2D7ED813F974}" SchemaVersion="89">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{44859AEB-C2EB-4D0A-8875-2D7ED813F974}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_BasementAmb" ID="{CDC7E284-CB78-479A-85DE-669B663D5B5F}">
+					<ChildrenList>
+						<Action Name="" ID="{CAB911C8-A3EC-4778-BE03-200F02188FDD}" ShortID="921151966">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BasmentAmb" ID="{BFA23880-BD9A-4715-9F63-141D95CBD8F4}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_WarehouseAmb" ID="{498968D4-1DF5-4EA9-9EEF-B9C0B6ECE5E8}">
+					<ChildrenList>
+						<Action Name="" ID="{C317861B-93A2-4BF0-9646-1BE85AB13207}" ShortID="592324335">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WarehouseAmb" ID="{2E963431-C192-4491-A99B-369C8DF80C0C}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_OfficeAmb" ID="{E4A06E52-DAFC-431C-8C2E-7D3B6539BB0E}">
+					<ChildrenList>
+						<Action Name="" ID="{3BF1B05B-D086-4404-B517-AC3B7934F1C6}" ShortID="1048766084">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="OfficeAmb" ID="{ECF63FBA-57ED-41E3-8812-574408E4B709}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_TempVO" ID="{E8CB902A-218A-4D0B-8C16-5A6196C5D7B7}">
+					<ChildrenList>
+						<Action Name="" ID="{0487777C-E078-4E54-BC0C-960A6D1B2F74}" ShortID="86895798">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TEMP VO" ID="{D3D1B085-8C3F-454B-8BA8-17A8F0DAA85F}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MetalStuff" ID="{343FE59D-2CF4-4712-8AA1-CFBD0103FB24}">
+					<ChildrenList>
+						<Action Name="" ID="{A134734A-3435-422F-ABAD-CF5560CEED58}" ShortID="566926515">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MetalStuff" ID="{DF36E903-4227-49E9-9523-3A64117EB3D8}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

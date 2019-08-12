@@ -1,0 +1,24 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	1204612419	InBasement			\Default Work Unit\InBasement	
+	1405072541	InWarehouse			\Default Work Unit\InWarehouse	
+	1835522492	InOffice			\Default Work Unit\InOffice	
+
+State	ID	Name	State Group			Notes
+	0	None	InBasement			
+	438283626	InBasement_True	InBasement			
+	3373870915	InBasement_False	InBasement			
+	0	None	InWarehouse			
+	2427179918	InWarehouse_Downstairs	InWarehouse			
+	2782182489	InWarehouse_False	InWarehouse			
+	3836659717	InWarehouse_Upstairs	InWarehouse			
+	0	None	InOffice			
+	2186004003	InOffice_True	InOffice			
+	3991640988	InOffice_False	InOffice			
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+

@@ -1,0 +1,41 @@
+Event	ID	Name			Wwise Object Path	Notes
+	534090511	Play_MetalStuff			\Default Work Unit\Play_MetalStuff	
+	673677130	Play_OfficeAmb			\Default Work Unit\Play_OfficeAmb	
+	1900208825	Play_TempVO			\Default Work Unit\Play_TempVO	
+	2662937473	Play_WarehouseAmb			\Default Work Unit\Play_WarehouseAmb	
+	3386623447	Play_BasementAmb			\Default Work Unit\Play_BasementAmb	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	1204612419	InBasement			\Default Work Unit\InBasement	
+	1405072541	InWarehouse			\Default Work Unit\InWarehouse	
+	1835522492	InOffice			\Default Work Unit\InOffice	
+
+State	ID	Name	State Group			Notes
+	0	None	InBasement			
+	438283626	InBasement_True	InBasement			
+	3373870915	InBasement_False	InBasement			
+	0	None	InWarehouse			
+	2427179918	InWarehouse_Downstairs	InWarehouse			
+	2782182489	InWarehouse_False	InWarehouse			
+	3836659717	InWarehouse_Upstairs	InWarehouse			
+	0	None	InOffice			
+	2186004003	InOffice_True	InOffice			
+	3991640988	InOffice_False	InOffice			
+
+Custom State	ID	Name	State Group	Owner		Notes
+	243025896	InWarehouse_Upstairs	InWarehouse	\Actor-Mixer Hierarchy\Default Work Unit\WarehouseAmb		
+	461458422	InWarehouse_False	InWarehouse	\Actor-Mixer Hierarchy\Default Work Unit\WarehouseAmb		
+	572160653	InBasement_False	InBasement	\Actor-Mixer Hierarchy\Default Work Unit\BasmentAmb		
+	727879782	InOffice_False	InOffice	\Actor-Mixer Hierarchy\Default Work Unit\OfficeAmb		
+
+Effect plug-ins	ID	Name	Type				Notes
+	2995775460	Room_Small	Wwise RoomVerb			
+	3900114836	Metal_Hangar	Wwise RoomVerb			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	65395503	MetalStuff	C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Mac\SFX\SQUEAK_Metal_Hinge_04_mono_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\MetalStuff		160164
+	127367576	OfficeAmb	C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Mac\SFX\Synth Ambience LOOP_8956FC97.wem		\Actor-Mixer Hierarchy\Default Work Unit\OfficeAmb		15346864
+	359980212	WarehouseAmb	C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Mac\SFX\99S LT Ambience Underwater - Iron Sewer_8956FC97.wem		\Actor-Mixer Hierarchy\Default Work Unit\WarehouseAmb		57600064
+	466585736	TEMP VO	C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Mac\SFX\ESC VO Temp_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\TEMP VO		1898994
+	778324750	BasmentAmb	C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Mac\SFX\hallway_of_fear_sub_air_hollow_01_loop_8956FC97.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasmentAmb		5911676
+
