@@ -14,7 +14,8 @@ public class TimeObject : MonoBehaviour, ITimeObject
 #if UNITY_EDITOR
 
     [SerializeField]
-    private bool customEditor = true;
+    private bool _customEditor = true;
+    public bool CustomEditor { get => _customEditor; }
 
 #endif
 
