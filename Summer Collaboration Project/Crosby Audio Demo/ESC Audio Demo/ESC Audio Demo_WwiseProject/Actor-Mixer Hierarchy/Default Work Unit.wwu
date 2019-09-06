@@ -119,7 +119,7 @@
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-5</Value>
+								<Value>-12</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -162,7 +162,25 @@
 						<ActiveSource Name="Synth Ambience LOOP" ID="{662C8E77-1ACB-4DA9-A2AB-396A32F49E0A}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<Sound Name="TEMP VO" ID="{D3D1B085-8C3F-454B-8BA8-17A8F0DAA85F}" ShortID="311129567">
+				<Sound Name="Start_VO" ID="{D3D1B085-8C3F-454B-8BA8-17A8F0DAA85F}" ShortID="311129567">
+					<PropertyList>
+						<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{530EE42B-8D87-4F22-8DC8-B42C24678C5D}"/>
@@ -172,13 +190,13 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="ESC VO Temp" ID="{C9D326C0-B715-463A-94A9-57C2335E8A55}" ShortID="466585736">
+						<AudioFileSource Name="Start_VO_Bounce" ID="{EF76130D-D680-4D7B-9836-29D3AE5A692D}" ShortID="108529409">
 							<Language>SFX</Language>
-							<AudioFile>ESC VO Temp.wav</AudioFile>
+							<AudioFile>Start_VO_Bounce.wav</AudioFile>
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="ESC VO Temp" ID="{C9D326C0-B715-463A-94A9-57C2335E8A55}" Platform="Linked"/>
+						<ActiveSource Name="Start_VO_Bounce" ID="{EF76130D-D680-4D7B-9836-29D3AE5A692D}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="MetalStuff" ID="{DF36E903-4227-49E9-9523-3A64117EB3D8}" ShortID="351844175">
@@ -258,6 +276,120 @@
 					</PositioningInfo>
 					<ActiveSourceList>
 						<ActiveSource Name="SQUEAK_Metal_Hinge_04_mono" ID="{4D63B94B-43F7-4950-9B58-B6D0364EF0C8}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="End_VO" ID="{2AEE1F57-DA24-4E5E-AACD-CF19AA8FB9E6}" ShortID="477088149">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{530EE42B-8D87-4F22-8DC8-B42C24678C5D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8221BB76-0688-4132-B34C-B9BA488B2B7E}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="End_VO_Bounce" ID="{26481B8E-D0A4-4BA8-B544-3FBEEA7C7BD1}" ShortID="857379808">
+							<Language>SFX</Language>
+							<AudioFile>End_VO_Bounce.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="End_VO_Bounce" ID="{26481B8E-D0A4-4BA8-B544-3FBEEA7C7BD1}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Loudspeaker_VO" ID="{E7D538FC-B9B2-4F0F-87C9-D65322DF773B}" ShortID="912427093">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="2"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<Custom>
+								<Attenuation Name="Attenuation (Custom)" ID="{C032BE7E-6534-443F-A523-D85DFDA77198}" ShortID="538797378">
+									<CurveUsageInfoList>
+										<VolumeDryUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+												<Curve Name="VolumeDry" ID="{B03DBA0C-B0E4-4733-8E62-225EFC478837}">
+													<PropertyList>
+														<Property Name="Flags" Type="int32" Value="3"/>
+													</PropertyList>
+													<PointList>
+														<Point>
+															<XPos>0</XPos>
+															<YPos>0</YPos>
+															<Flags>5</Flags>
+														</Point>
+														<Point>
+															<XPos>100</XPos>
+															<YPos>-200</YPos>
+															<Flags>37</Flags>
+														</Point>
+													</PointList>
+												</Curve>
+											</CurveUsageInfo>
+										</VolumeDryUsage>
+										<VolumeWetGameUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetGameUsage>
+										<VolumeWetUserUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetUserUsage>
+										<LowPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</LowPassFilterUsage>
+										<HighPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</HighPassFilterUsage>
+										<SpreadUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</SpreadUsage>
+										<FocusUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</FocusUsage>
+									</CurveUsageInfoList>
+								</Attenuation>
+							</Custom>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{530EE42B-8D87-4F22-8DC8-B42C24678C5D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8221BB76-0688-4132-B34C-B9BA488B2B7E}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Loudspeaker_VO_Bounce" ID="{F8E451BD-EB9C-449F-B3F9-F246957B8F8E}" ShortID="254099417">
+							<Language>SFX</Language>
+							<AudioFile>Loudspeaker_VO_Bounce.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Loudspeaker_VO_Bounce" ID="{F8E451BD-EB9C-449F-B3F9-F246957B8F8E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Handler_Response_VO" ID="{EACEBE67-F8C0-4B60-B72B-CA2BBD538E39}" ShortID="1073155899">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{530EE42B-8D87-4F22-8DC8-B42C24678C5D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8221BB76-0688-4132-B34C-B9BA488B2B7E}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Handler_Response_VO_Bounce" ID="{85BBB79E-DA5B-4AE8-9857-BF7072B00990}" ShortID="399155106">
+							<Language>SFX</Language>
+							<AudioFile>Handler_Response_VO_Bounce.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Handler_Response_VO_Bounce" ID="{85BBB79E-DA5B-4AE8-9857-BF7072B00990}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

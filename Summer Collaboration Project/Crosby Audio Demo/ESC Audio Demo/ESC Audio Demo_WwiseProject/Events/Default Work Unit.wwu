@@ -45,15 +45,16 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_TempVO" ID="{E8CB902A-218A-4D0B-8C16-5A6196C5D7B7}">
+				<Event Name="Play_StartVO" ID="{E8CB902A-218A-4D0B-8C16-5A6196C5D7B7}">
 					<ChildrenList>
 						<Action Name="" ID="{0487777C-E078-4E54-BC0C-960A6D1B2F74}" ShortID="86895798">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="Delay" Type="Real64" Value="0.5"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="TEMP VO" ID="{D3D1B085-8C3F-454B-8BA8-17A8F0DAA85F}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
+									<ObjectRef Name="Start_VO" ID="{D3D1B085-8C3F-454B-8BA8-17A8F0DAA85F}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -68,6 +69,67 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="MetalStuff" ID="{DF36E903-4227-49E9-9523-3A64117EB3D8}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_End_VO" ID="{6A922D15-E23A-4309-ABAE-05FF34FF9B55}">
+					<ChildrenList>
+						<Action Name="" ID="{765F18A0-9D53-476F-AAEA-E2D20BE2882C}" ShortID="442798620">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="End_VO" ID="{2AEE1F57-DA24-4E5E-AACD-CF19AA8FB9E6}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{843FDDA4-1E9D-40FF-8702-527286F1F984}" ShortID="758129276">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Loudspeaker_VO" ID="{E7D538FC-B9B2-4F0F-87C9-D65322DF773B}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_LoudspeakerInteraction" ID="{1A6913CC-B302-415C-81A3-924FB6AFFEC7}">
+					<ChildrenList>
+						<Action Name="" ID="{42DCDE70-00DF-447C-9C81-41197B70BCC9}" ShortID="894456793">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Loudspeaker_VO" ID="{E7D538FC-B9B2-4F0F-87C9-D65322DF773B}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{820B9BF5-AA49-4D8B-8960-7025C0C80949}" ShortID="279140899">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="Delay" Type="Real64" Value="10"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Handler_Response_VO" ID="{EACEBE67-F8C0-4B60-B72B-CA2BBD538E39}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{AD678AAA-8D0F-46CB-BAFC-61EA61581CE8}" ShortID="110491993">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Start_VO" ID="{D3D1B085-8C3F-454B-8BA8-17A8F0DAA85F}" WorkUnitID="{A843ACC7-102D-4A2E-9D58-5C821183F991}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

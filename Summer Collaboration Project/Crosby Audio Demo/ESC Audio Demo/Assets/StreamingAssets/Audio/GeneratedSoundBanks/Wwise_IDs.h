@@ -14,9 +14,11 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID PLAY_BASEMENTAMB = 3386623447U;
+        static const AkUniqueID PLAY_END_VO = 2684126745U;
+        static const AkUniqueID PLAY_LOUDSPEAKERINTERACTION = 397277115U;
         static const AkUniqueID PLAY_METALSTUFF = 534090511U;
         static const AkUniqueID PLAY_OFFICEAMB = 673677130U;
-        static const AkUniqueID PLAY_TEMPVO = 1900208825U;
+        static const AkUniqueID PLAY_STARTVO = 2419452367U;
         static const AkUniqueID PLAY_WAREHOUSEAMB = 2662937473U;
     } // namespace EVENTS
 
@@ -57,6 +59,11 @@ namespace AK
         } // namespace INWAREHOUSE
 
     } // namespace STATES
+
+    namespace GAME_PARAMETERS
+    {
+        static const AkUniqueID VO_PLAYING_TRUE = 2417598218U;
+    } // namespace GAME_PARAMETERS
 
     namespace BANKS
     {

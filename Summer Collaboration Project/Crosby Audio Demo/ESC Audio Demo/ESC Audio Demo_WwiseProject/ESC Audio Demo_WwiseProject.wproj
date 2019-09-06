@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="Project" SchemaVersion="89" WwiseVersion="v2018.1.1" WwiseBuild="6727">
+<WwiseDocument Type="Project" SchemaVersion="89" WwiseVersion="v2018.1.5" WwiseBuild="6835">
 	<ProjectInfo>
 		<Project Name="ESC Audio Demo_WwiseProject" ID="{56BED742-CDBD-4DBC-BA55-C497628C3890}">
 			<Platforms>
@@ -111,6 +111,16 @@
 						<Property Name="LoopEnd" Type="Real64">
 							<ValueList>
 								<Value>-1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MarkerDetectionSensitivity" Type="Real64">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MarkerInputMode" Type="int16">
+							<ValueList>
+								<Value>0</Value>
 							</ValueList>
 						</Property>
 						<Property Name="OverrideConversion" Type="bool">
@@ -7585,7 +7595,7 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
-				<SharedPropertyList ClassName="Resonance Audio Renderer" PluginType="3" CompanyID="272" PluginID="100">
+				<SharedPropertyList ClassName="" PluginType="3" CompanyID="272" PluginID="100">
 					<PropertyList>
 						<Property Name="Color" Type="int16">
 							<ValueList>
@@ -9401,7 +9411,7 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
-				<SharedPropertyList ClassName="Wwise Convolution Reverb" PluginType="3" CompanyID="0" PluginID="127">
+				<SharedPropertyList ClassName="" PluginType="3" CompanyID="0" PluginID="127">
 					<PropertyList>
 						<Property Name="AlgoTypeSelect" Type="int32">
 							<ValueList>
@@ -10241,7 +10251,7 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
-				<SharedPropertyList ClassName="Microsoft Spatial Sound Platform Output" PluginType="7" CompanyID="275" PluginID="170">
+				<SharedPropertyList ClassName="" PluginType="7" CompanyID="275" PluginID="170">
 					<PropertyList>
 						<Property Name="Color" Type="int16">
 							<ValueList>
@@ -10496,7 +10506,7 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
-				<SharedPropertyList ClassName="Resonance Audio Room Effects" PluginType="6" CompanyID="272" PluginID="200">
+				<SharedPropertyList ClassName="" PluginType="6" CompanyID="272" PluginID="200">
 					<PropertyList>
 						<Property Name="Color" Type="int16">
 							<ValueList>
@@ -10515,7 +10525,7 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
-				<SharedPropertyList ClassName="AttachableMixerInput" PluginType="3" CompanyID="272" PluginID="201">
+				<SharedPropertyList ClassName="" PluginType="3" CompanyID="272" PluginID="201">
 					<PropertyList>
 						<Property Name="Bypass" Type="bool">
 							<ValueList>
@@ -10672,7 +10682,7 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
-				<SharedPropertyList ClassName="CrankcaseAudio REV" PluginType="2" CompanyID="261" PluginID="416">
+				<SharedPropertyList ClassName="" PluginType="2" CompanyID="261" PluginID="416">
 					<PropertyList>
 						<Property Name="EnableShifting" Type="int32">
 							<ValueList>
@@ -10711,7 +10721,7 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
-				<SharedPropertyList ClassName="EngineSimulationControlData" PluginType="0" CompanyID="261" PluginID="417">
+				<SharedPropertyList ClassName="" PluginType="0" CompanyID="261" PluginID="417">
 					<PropertyList>
 						<Property Name="ClutchRPMMergeTime" Type="Real32">
 							<ValueList>
@@ -10790,7 +10800,7 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
-				<SharedPropertyList ClassName="AccelDecelModelControlData" PluginType="0" CompanyID="261" PluginID="418">
+				<SharedPropertyList ClassName="" PluginType="0" CompanyID="261" PluginID="418">
 					<PropertyList>
 						<Property Name="CrossfadeDuration" Type="int32">
 							<ValueList>
@@ -10849,7 +10859,7 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
-				<SharedPropertyList ClassName="GranularModelControlData" PluginType="0" CompanyID="261" PluginID="419">
+				<SharedPropertyList ClassName="" PluginType="0" CompanyID="261" PluginID="419">
 					<PropertyList>
 						<Property Name="GrainWidth" Type="int32">
 							<ValueList>
@@ -11001,7 +11011,7 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
-				<SharedPropertyList ClassName="" PluginType="0" CompanyID="0" PluginID="993">
+				<SharedPropertyList ClassName="Marker" PluginType="0" CompanyID="0" PluginID="993">
 					<PropertyList>
 						<Property Name="Time" Type="Real64">
 							<ValueList>

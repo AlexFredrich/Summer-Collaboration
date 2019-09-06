@@ -1,8 +1,10 @@
 Event	ID	Name			Wwise Object Path	Notes
+	397277115	Play_LoudspeakerInteraction			\Default Work Unit\Play_LoudspeakerInteraction	
 	534090511	Play_MetalStuff			\Default Work Unit\Play_MetalStuff	
 	673677130	Play_OfficeAmb			\Default Work Unit\Play_OfficeAmb	
-	1900208825	Play_TempVO			\Default Work Unit\Play_TempVO	
+	2419452367	Play_StartVO			\Default Work Unit\Play_StartVO	
 	2662937473	Play_WarehouseAmb			\Default Work Unit\Play_WarehouseAmb	
+	2684126745	Play_End_VO			\Default Work Unit\Play_End_VO	
 	3386623447	Play_BasementAmb			\Default Work Unit\Play_BasementAmb	
 
 State Group	ID	Name			Wwise Object Path	Notes
@@ -30,13 +32,14 @@ Custom State	ID	Name	State Group	Owner		Notes
 
 Effect plug-ins	ID	Name	Type				Notes
 	484890516	Church_Small_Wood	Wwise RoomVerb			
-	2995775460	Room_Small	Wwise RoomVerb			
-	3900114836	Metal_Hangar	Wwise RoomVerb			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	65395503	MetalStuff	C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\SQUEAK_Metal_Hinge_04_mono_8956FC97.wem		\Actor-Mixer Hierarchy\Default Work Unit\MetalStuff		160164
-	127367576	OfficeAmb	C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\Synth Ambience LOOP_8956FC97.wem		\Actor-Mixer Hierarchy\Default Work Unit\OfficeAmb		15346864
-	359980212	WarehouseAmb	C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\99S LT Ambience Underwater - Iron Sewer_8956FC97.wem		\Actor-Mixer Hierarchy\Default Work Unit\WarehouseAmb		57600064
-	466585736	TEMP VO	C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\ESC VO Temp_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\TEMP VO		1898994
-	778324750	BasmentAmb	C:\Users\crn22\OneDrive\Documents\Unity Projects\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\hallway_of_fear_sub_air_hollow_01_loop_8956FC97.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasmentAmb		5911676
+	65395503	MetalStuff	C:\Users\crn22\OneDrive\Desktop\Summer-Collaboration\Summer Collaboration Project\Crosby Audio Demo\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\SQUEAK_Metal_Hinge_04_mono_8956FC97.wem		\Actor-Mixer Hierarchy\Default Work Unit\MetalStuff		160164
+	108529409	Start_VO	C:\Users\crn22\OneDrive\Desktop\Summer-Collaboration\Summer Collaboration Project\Crosby Audio Demo\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\Start_VO_Bounce_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\Start_VO		1855808
+	127367576	OfficeAmb	C:\Users\crn22\OneDrive\Desktop\Summer-Collaboration\Summer Collaboration Project\Crosby Audio Demo\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\Synth Ambience LOOP_8956FC97.wem		\Actor-Mixer Hierarchy\Default Work Unit\OfficeAmb		15346864
+	254099417	Loudspeaker_VO	C:\Users\crn22\OneDrive\Desktop\Summer-Collaboration\Summer Collaboration Project\Crosby Audio Demo\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\Loudspeaker_VO_Bounce_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\Loudspeaker_VO		1027648
+	359980212	WarehouseAmb	C:\Users\crn22\OneDrive\Desktop\Summer-Collaboration\Summer Collaboration Project\Crosby Audio Demo\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\99S LT Ambience Underwater - Iron Sewer_8956FC97_537A2289.wem		\Actor-Mixer Hierarchy\Default Work Unit\WarehouseAmb		58814528
+	399155106	Handler_Response_VO	C:\Users\crn22\OneDrive\Desktop\Summer-Collaboration\Summer Collaboration Project\Crosby Audio Demo\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\Handler_Response_VO_Bounce_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\Handler_Response_VO		320448
+	778324750	BasmentAmb	C:\Users\crn22\OneDrive\Desktop\Summer-Collaboration\Summer Collaboration Project\Crosby Audio Demo\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\hallway_of_fear_sub_air_hollow_01_loop_8956FC97_C05AA21D.wem		\Actor-Mixer Hierarchy\Default Work Unit\BasmentAmb		6049856
+	857379808	End_VO	C:\Users\crn22\OneDrive\Desktop\Summer-Collaboration\Summer Collaboration Project\Crosby Audio Demo\ESC Audio Demo\ESC Audio Demo_WwiseProject\.cache\Windows\SFX\End_VO_Bounce_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\End_VO		829504
 

@@ -3,9 +3,11 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{FD88BA0B-F880-4207-A8C6-3473CA35BE2A}">
 			<PropertyList>
+				<Property Name="Event Action List\{1A6913CC-B302-415C-81A3-924FB6AFFEC7}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{343FE59D-2CF4-4712-8AA1-CFBD0103FB24}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{39837984-A50B-4908-AB15-CF3724CBADAF}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{498968D4-1DF5-4EA9-9EEF-B9C0B6ECE5E8}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{6A922D15-E23A-4309-ABAE-05FF34FF9B55}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{7EBCC404-0C41-4D4B-B576-E93363682E74}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{CDC7E284-CB78-479A-85DE-669B663D5B5F}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{E4A06E52-DAFC-431C-8C2E-7D3B6539BB0E}\x64_Expand States" Type="string" Value=""/>
@@ -68,6 +70,7 @@
 				<Property Name="ProjectExplorer\x64_Expanded_6_1" Type="string" Value="mtYxXLeHCU6DKY4U3nsIEQ=="/>
 				<Property Name="ProjectExplorer\x64_Expanded_7_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_8_1" Type="string" Value=""/>
+				<Property Name="RTPC\GameParameterSimValue\{266C1238-2866-486F-A0AB-51DA2A5D92CE}" Type="Real64" Value="100"/>
 				<Property Name="SoundBank Manager\x64_Expand States" Type="string" Value="mtYxXLeHCU6DKY4U3nsIEQ=="/>
 				<Property Name="SoundBankHeaderFilePath" Type="string" Value="GeneratedSoundBanks\"/>
 				<Property Name="SoundBankPaths" Type="string">

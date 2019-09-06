@@ -5,10 +5,12 @@
 			<ChildrenList>
 				<SoundBank Name="MainSoundBank" ID="{E79099DF-A71D-44FA-BC09-5ADB5CFF98F7}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_LoudspeakerInteraction" ID="{1A6913CC-B302-415C-81A3-924FB6AFFEC7}" WorkUnitID="{44859AEB-C2EB-4D0A-8875-2D7ED813F974}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_End_VO" ID="{6A922D15-E23A-4309-ABAE-05FF34FF9B55}" WorkUnitID="{44859AEB-C2EB-4D0A-8875-2D7ED813F974}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="Play_OfficeAmb" ID="{E4A06E52-DAFC-431C-8C2E-7D3B6539BB0E}" WorkUnitID="{44859AEB-C2EB-4D0A-8875-2D7ED813F974}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="Play_MetalStuff" ID="{343FE59D-2CF4-4712-8AA1-CFBD0103FB24}" WorkUnitID="{44859AEB-C2EB-4D0A-8875-2D7ED813F974}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="Play_BasementAmb" ID="{CDC7E284-CB78-479A-85DE-669B663D5B5F}" WorkUnitID="{44859AEB-C2EB-4D0A-8875-2D7ED813F974}" Filter="7" Origin="Manual"/>
-						<ObjectRef Name="Play_TempVO" ID="{E8CB902A-218A-4D0B-8C16-5A6196C5D7B7}" WorkUnitID="{44859AEB-C2EB-4D0A-8875-2D7ED813F974}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_StartVO" ID="{E8CB902A-218A-4D0B-8C16-5A6196C5D7B7}" WorkUnitID="{44859AEB-C2EB-4D0A-8875-2D7ED813F974}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="Play_WarehouseAmb" ID="{498968D4-1DF5-4EA9-9EEF-B9C0B6ECE5E8}" WorkUnitID="{44859AEB-C2EB-4D0A-8875-2D7ED813F974}" Filter="7" Origin="Manual"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

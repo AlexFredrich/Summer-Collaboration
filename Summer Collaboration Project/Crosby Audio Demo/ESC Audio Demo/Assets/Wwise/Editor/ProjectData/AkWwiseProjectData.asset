@@ -32,8 +32,8 @@ MonoBehaviour:
     List: []
   BankWwu:
   - Guid: '{5C31D69A-87B7-4E09-8329-8E14DE7B0811}'
-    m_lastTimePart2: -1999168420
-    m_lastTimePsrt1: 2083842823
+    m_lastTimePart2: -1999162789
+    m_lastTimePsrt1: -102458628
     ParentPhysicalPath: 
     PhysicalPath: SoundBanks\Default Work Unit.wwu
     List:
@@ -48,8 +48,8 @@ MonoBehaviour:
         ObjectType: 7
   EventWwu:
   - Guid: '{44859AEB-C2EB-4D0A-8875-2D7ED813F974}'
-    m_lastTimePart2: -1999168422
-    m_lastTimePsrt1: 1260254843
+    m_lastTimePart2: -1999162786
+    m_lastTimePsrt1: -1782902850
     ParentPhysicalPath: 
     PhysicalPath: Events\Default Work Unit.wwu
     List:
@@ -65,25 +65,184 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - Guid: 152d926a3ae20943abae05ff34ff9b55
+      ID: -1610840551
+      Name: Play_End_VO
+      Path: Default Work Unit\Play_End_VO
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_End_VO
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: cc13691a02b35c4181a3924fb6affec7
+      ID: 397277115
+      Name: Play_LoudspeakerInteraction
+      Path: Default Work Unit\Play_LoudspeakerInteraction
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_LoudspeakerInteraction
+        ObjectType: 3
+      maxAttenuation: 100
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 9de53f34f42c12478aa1cfbd0103fb24
+      ID: 534090511
+      Name: Play_MetalStuff
+      Path: Default Work Unit\Play_MetalStuff
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_MetalStuff
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 526ea0e4fcda1c438c2e7d3b6539bb0e
+      ID: 673677130
+      Name: Play_OfficeAmb
+      Path: Default Work Unit\Play_OfficeAmb
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_OfficeAmb
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 2a90cbe88a210b4d8c165a6196c5d7b7
+      ID: -1875514929
+      Name: Play_StartVO
+      Path: Default Work Unit\Play_StartVO
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_StartVO
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: d4688949f51da94e9eefb9c0b6ece5e8
+      ID: -1632029823
+      Name: Play_WarehouseAmb
+      Path: Default Work Unit\Play_WarehouseAmb
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_WarehouseAmb
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   ExpandedItems:
   - /ESC Audio Demo_WwiseProject
   - /ESC Audio Demo_WwiseProject/Events
-  - /ESC Audio Demo_WwiseProject/SoundBanks
-  - /ESC Audio Demo_WwiseProject/SoundBanks/Default Work Unit
+  - /ESC Audio Demo_WwiseProject/Events/Default Work Unit
   RtpcWwu:
   - Guid: '{54ACC88A-4D67-4A60-8EAD-91FCF606E3BB}'
-    m_lastTimePart2: -1999168426
-    m_lastTimePsrt1: 1150794241
+    m_lastTimePart2: -1999162785
+    m_lastTimePsrt1: -479319989
     ParentPhysicalPath: 
     PhysicalPath: Game Parameters\Default Work Unit.wwu
-    List: []
+    List:
+    - Guid: 38126c2666286f48a0ab51da2a5d92ce
+      ID: -1877369078
+      Name: VO_Playing_True
+      Path: Default Work Unit\VO_Playing_True
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: VO_Playing_True
+        ObjectType: 13
   StateWwu:
   - Guid: '{2A159333-F6DA-4100-929A-1B55B9220D94}'
-    m_lastTimePart2: -1999168426
-    m_lastTimePsrt1: 1154159711
+    m_lastTimePart2: -1999167688
+    m_lastTimePsrt1: 2121638004
     ParentPhysicalPath: 
     PhysicalPath: States\Default Work Unit.wwu
-    List: []
+    List:
+    - Guid: df046e7d5e65bd4d8ec963efa2a0ffa9
+      ID: 1204612419
+      Name: InBasement
+      Path: Default Work Unit\InBasement
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: InBasement
+        ObjectType: 9
+      ValueGuids:
+      - bytes: 2cbef143e0a46643a4548731f6472fbf
+      - bytes: 4031c4a85172b246a3f42f812d4fa005
+      - bytes: 210a263386eb9149860c03ae3e5307f7
+      ValueIcons:
+      - ElementName: InBasement_False
+        ObjectType: 8
+      - ElementName: InBasement_True
+        ObjectType: 8
+      - ElementName: None
+        ObjectType: 8
+      valueIDs: 432f19c96aad1f1adb3ba32c
+      values:
+      - InBasement_False
+      - InBasement_True
+      - None
+    - Guid: 8faf2fd3b28481429ee17e83b6bb6bf9
+      ID: 1835522492
+      Name: InOffice
+      Path: Default Work Unit\InOffice
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: InOffice
+        ObjectType: 9
+      ValueGuids:
+      - bytes: 902e201c0dbe1c438be23a82a4a28beb
+      - bytes: 6a5fe06b26272d48858d91441afd4622
+      - bytes: a552aff388c1a642afb7f250590ec640
+      ValueIcons:
+      - ElementName: InOffice_False
+        ObjectType: 8
+      - ElementName: InOffice_True
+        ObjectType: 8
+      - ElementName: None
+        ObjectType: 8
+      valueIDs: 9c9bebed23c64b82db3ba32c
+      values:
+      - InOffice_False
+      - InOffice_True
+      - None
+    - Guid: 200e73eadb7d3145b0ef0071e42b5902
+      ID: 1405072541
+      Name: InWarehouse
+      Path: Default Work Unit\InWarehouse
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: InWarehouse
+        ObjectType: 9
+      ValueGuids:
+      - bytes: 3083e006864c334ebd5ffee7b9aae73c
+      - bytes: 176ce664b05aa94185489e7a2a145adf
+      - bytes: ce96275e9802604c8f760544d0fa7f3e
+      - bytes: ce31fa418ef1fd4b92792048dc562a5d
+      ValueIcons:
+      - ElementName: InWarehouse_Downstairs
+        ObjectType: 8
+      - ElementName: InWarehouse_False
+        ObjectType: 8
+      - ElementName: InWarehouse_Upstairs
+        ObjectType: 8
+      - ElementName: None
+        ObjectType: 8
+      valueIDs: 8ed3ab9059bcd4a505c8aee4db3ba32c
+      values:
+      - InWarehouse_Downstairs
+      - InWarehouse_False
+      - InWarehouse_Upstairs
+      - None
   SwitchWwu:
   - Guid: '{C7DBDC46-C960-4FED-A8EF-9E0C721FC9CA}'
     m_lastTimePart2: -1999168426
