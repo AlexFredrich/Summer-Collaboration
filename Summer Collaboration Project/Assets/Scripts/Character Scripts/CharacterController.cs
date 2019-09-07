@@ -168,16 +168,19 @@ public class CharacterController : MonoBehaviour
 
         RaycastHit[] hits = Physics.CapsuleCastAll(point1, point2, radius, direction, castDistance);
 
-        /* Returns false if the CapsuleCast hits an object tagged "Wall" */
-        foreach (RaycastHit objectHit in hits)
+        /* Returns false if the CapsuleCast hits an object tagged "Wall" while in mid-air so the player doesn't get stuck on the side of them */
+        if (!IsOnGround)
         {
-            if (objectHit.transform.gameObject.tag == WALLTAGNAME)   //all objects the player cannot move through must be tagged "Wall"
+            foreach (RaycastHit objectHit in hits)
             {
-                return false;
+                if (objectHit.transform.gameObject.tag == WALLTAGNAME)   //READ: all objects the player cannot move through while jumping must be tagged "Wall"
+                {
+                    return false;
+                }
             }
         }
 
-        /* Returns true if the CapsuleCast doesn't hit an object tagged "Wall" */
+        /* Returns true if the player is on the ground or the CapsuleCast doesn't hit an object tagged "Wall" while in mid-air */
         return true;
     }
 
@@ -196,7 +199,7 @@ public class CharacterController : MonoBehaviour
         ///* Returns true if the CapsuleCast hits an object tagged "Ground" */
         //foreach (RaycastHit objectHit in hits)
         //{
-        //    if (objectHit.transform.gameObject.tag == GROUNDTAGNAME)   //all objects the player can jump off of must be tagged "Ground"
+        //    if (objectHit.transform.gameObject.tag == GROUNDTAGNAME)   //READ: all objects the player can jump off of must be tagged "Ground"
         //    {
         //        return true;
         //    }
