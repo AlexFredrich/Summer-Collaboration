@@ -34,7 +34,9 @@ public class ActivateObject : MonoBehaviour
     private void GetObjectToActivate()
     {
         RaycastHit hit;
-
+        //added by brendan 2019-09-08
+        Debug.DrawRay(transform.position, transform.forward, Color.red);
+        //end addition
         if (Physics.Raycast(transform.position, transform.forward, out hit, maxActivateDistance))
         {
             Debug.Log("Hit: " + hit.transform.name);
