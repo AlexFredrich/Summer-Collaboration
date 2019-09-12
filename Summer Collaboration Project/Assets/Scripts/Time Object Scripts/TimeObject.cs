@@ -201,8 +201,8 @@ public class TimeObject : MonoBehaviour, ITimeObject
     public void RecordDeltaChange()
     {
 
-        //if (thisRigidbody.velocity.magnitude != 0)
-        //{
+        if (thisRigidbody.velocity.magnitude != 0)
+        {
 
             TimePoint newTimePoint = new TimePoint(this.transform);
 
@@ -210,7 +210,7 @@ public class TimeObject : MonoBehaviour, ITimeObject
             CurrentTimePoint = newTimePoint;
             if (TimePointDelta.Count != 0) currentTimeIndex = TimePointDelta.Count - 1;
 
-        //}     //changed by brendan 2019-09-08
+        }   
 
     }
 
