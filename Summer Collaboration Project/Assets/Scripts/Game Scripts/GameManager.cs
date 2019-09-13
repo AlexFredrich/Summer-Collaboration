@@ -57,6 +57,5 @@ public class GameManager : MonoBehaviour
         JumpButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(JUMPKEYNAME, "Space"));
         SprintButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(SPRINTKEYNAME, "LeftShift"));
         PauseButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(PAUSEKEYNAME, "Escape"));
-
     }
 }

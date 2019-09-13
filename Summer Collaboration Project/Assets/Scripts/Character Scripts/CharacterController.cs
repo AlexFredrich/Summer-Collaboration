@@ -169,7 +169,7 @@ public class CharacterController : MonoBehaviour
         RaycastHit[] hits = Physics.CapsuleCastAll(point1, point2, radius, direction, castDistance);
 
         /* Returns false if the CapsuleCast hits an object tagged "Wall" while in mid-air so the player doesn't get stuck on the side of them */
-        if (!IsOnGround)
+        if (!IsOnGround())
         {
             foreach (RaycastHit objectHit in hits)
             {
