@@ -14,39 +14,47 @@ public class TimeObject : MonoBehaviour, ITimeObject
 #if UNITY_EDITOR
 
     [SerializeField]
-    private bool customEditor = true;
+    private bool _customEditor = true;
+    public bool CustomEditor { get => _customEditor; }
 
 #endif
 
     // How much time points should be recorded before culling starts
     [SerializeField]
+    [Tooltip("Time points allowed before culling")]
     private int deltaPointLimit = 200;
 
     [SerializeField]
+    [Tooltip("Record even frames where object is not moving")]
     private bool _recordAllTransform;
     public bool RecordAllTransform { get => _recordAllTransform; private set => _recordAllTransform = value; }
 
     [SerializeField]
+    [Tooltip("What was the previous time state")]
     private TimeState _previousTimeState;
     public TimeState PreviousTimeState { get => _previousTimeState; private set => _previousTimeState = value; }
 
     // What is our current time state
     [SerializeField]
+    [Tooltip("What is the current time state")]
     private TimeState _currentTimeState;
     public TimeState CurrentTimeState { get => _currentTimeState; private set => _currentTimeState = value; }
 
     // What is our current time point
     [SerializeField]
+    [Tooltip("What is the current time point")]
     private TimePoint _currentTimePoint;
     public TimePoint CurrentTimePoint { get => _currentTimePoint; private set => _currentTimePoint = value; }
 
     // Records Initial Timepoint since game started
     [SerializeField]
+    [Tooltip("Initial time point when the game started")]
     private TimePoint _originalTimePoint;
     public TimePoint OriginalTimePoint { get => _originalTimePoint; private set => _originalTimePoint = value; }
 
     // List of time point delta changes
     [SerializeField]
+    [Tooltip("Collection of all Time points recorded")]
     private List<TimePoint> _timePointDelta;
     public List<TimePoint> TimePointDelta { get => _timePointDelta; private set => _timePointDelta = value; }
 
@@ -63,7 +71,9 @@ public class TimeObject : MonoBehaviour, ITimeObject
     private bool clearAfterReverseComplete;
 
     // Allow other gameobjects to listen into time events
+    [Tooltip("When Time object reverse sequence completes")]
     public UnityEvent OnReverseComplete;
+    [Tooltip("When Time object forward sequence completes")]
     public UnityEvent OnForwardComplete;
 
     private void Awake()
