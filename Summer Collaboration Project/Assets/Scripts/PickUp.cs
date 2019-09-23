@@ -7,6 +7,8 @@ public class PickUp : MonoBehaviour
     [SerializeField]
     Transform pickupPoint;
     [SerializeField]
+    Transform lookPoint;
+    [SerializeField]
     float speed = .5f;
     [SerializeField]
     float rotationSlowSpeed = .8f;

@@ -18,7 +18,7 @@ public class KeyRebindMenu : MonoBehaviour
     private Text _buttonText;
 
     private bool _isWaitingForKey;
-    private bool _cursorIsLocked;
+    private bool _cursorIsLocked;   //TODO: move to main menu script
 
     //STEP #3: COPY THE KEY NAME STRING FROM GAMEMANAGER.CS
 
@@ -34,15 +34,19 @@ public class KeyRebindMenu : MonoBehaviour
     
     private void Awake()
     {
-        _keyRebindPanel = this.gameObject.transform.Find("Key Rebind Panel");
+        _keyRebindPanel = this.gameObject.transform.Find("Key Rebind Panel");   //the key rebind panel must be a child of the canvas this script is attached to and must be named "Key Rebind Panel"
+
+        _keyEvent = null;
+        _newKey = KeyCode.Space;
+        _buttonText = null;
 
         _isWaitingForKey = false;
-        _cursorIsLocked = false;
+        _cursorIsLocked = false;    //TODO: move to main menu script
 
         _keyRebindPanel.gameObject.SetActive(false);
 
         /* Lock cursor */
-        ChangeCursorLock();
+        ChangeCursorLock(); //TODO: move to main menu script
     }
 
     private void Start()
@@ -270,7 +274,7 @@ public class KeyRebindMenu : MonoBehaviour
     /// <param name="text"></param>
     public void SendText(Text text)
     {
-        /* Saves reference to current button's text */
+        /* Saves a reference to the clicked on button's text */
         _buttonText = text;
     }
 
