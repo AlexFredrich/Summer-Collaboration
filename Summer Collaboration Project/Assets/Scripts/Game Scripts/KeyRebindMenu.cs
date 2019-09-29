@@ -93,7 +93,7 @@ public class KeyRebindMenu : MonoBehaviour
         {
             /* Toggle cursor */
             ChangeCursorLock();
-            
+
             /* Toggle menu */
             _keyRebindPanel.gameObject.SetActive(!_keyRebindPanel.gameObject.activeSelf);
         }
