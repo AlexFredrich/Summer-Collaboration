@@ -62,13 +62,13 @@ public class CharacterController : MonoBehaviour
     {
         GetMovementInput();
         ChangeSpeed();
+        GetJumpInput();
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
         Jump();
-        GetJumpInput();
     }
 
     private void GetMovementInput()
