@@ -26,6 +26,7 @@ public class CharacterController : MonoBehaviour
     private Vector3 _movementDirection;
 
     private int _currentSpeed;
+    private bool _needToJump;
 
     public static CharacterController Instance { get; private set; }
 
@@ -51,6 +52,7 @@ public class CharacterController : MonoBehaviour
         }
 
         _currentSpeed = _walkSpeed;
+        _needToJump = false;
 
         _collider = this.gameObject.GetComponent<CapsuleCollider>();
         _rb = this.gameObject.GetComponent<Rigidbody>();
@@ -66,6 +68,7 @@ public class CharacterController : MonoBehaviour
     {
         MovePlayer();
         Jump();
+        GetJumpInput();
     }
 
     private void GetMovementInput()
@@ -135,6 +138,15 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    private void GetJumpInput()
+    {
+        /* Makes the player jump when the jump button is pressed and the player is on the ground */
+        if (Input.GetKeyDown(GameManager.Instance.JumpButton) && IsOnGround())
+        {
+            _needToJump = true;
+        }
+    }
+
     private void MovePlayer()
     {
         /* Get current y velocity */
@@ -149,9 +161,11 @@ public class CharacterController : MonoBehaviour
 
     private void Jump()
     {
-        /* Makes the player jump when the jump button is pressed and the player is on the ground */
-        if (Input.GetKeyDown(GameManager.Instance.JumpButton) && IsOnGround())
+        /* Adds jump force if the player gave jump input */
+        if (_needToJump)
         {
+            _needToJump = false;
+
             _rb.velocity = new Vector3(0, _jumpHeight * Time.deltaTime, 0);
         }
     }
@@ -190,10 +204,11 @@ public class CharacterController : MonoBehaviour
 
         Vector3 point1 = this.gameObject.transform.position + _collider.center + (Vector3.up * distanceToPoints);
         Vector3 point2 = this.gameObject.transform.position + _collider.center - (Vector3.up * distanceToPoints);
-        
+
+        float radius = _collider.radius * 0.95f;    //must be slightly smaller than the radius of the capsule so it doesn't detect objects the sides of the player are touching
         float castDistance = 0.1f;
 
-        RaycastHit[] hits = Physics.CapsuleCastAll(point1, point2, _collider.radius, -this.gameObject.transform.up, castDistance);
+        RaycastHit[] hits = Physics.CapsuleCastAll(point1, point2, radius, -this.gameObject.transform.up, castDistance);
 
         //commented out since it would be unnecessary work to tag all objects the player can jump off of. should check for objects the player can't jump off of instead.
         ///* Returns true if the CapsuleCast hits an object tagged "Ground" */
@@ -208,7 +223,7 @@ public class CharacterController : MonoBehaviour
         /* Returns true if the CapsuleCast hits an object below the player that will not kill the player */
         foreach (RaycastHit objectHit in hits)
         {
-            if (objectHit.transform.gameObject.GetComponent<KillPlayer>() == null)
+            if (hits.Length > 1 && objectHit.transform.gameObject.GetComponent<KillPlayer>() == null)
             {
                 return true;
             }
