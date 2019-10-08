@@ -27,8 +27,8 @@ public class CameraController : MonoBehaviour
     [Range(0.0f, 85.0f)]
     private float _maxVerticalLookAngle;     //x axis max clamp
 
-    private float _currentYRotation;
-    private float _currentXRotation;
+    private float _yRotation;
+    private float _xRotation;
 
     public static CameraController Instance { get; private set; }
 
@@ -50,8 +50,8 @@ public class CameraController : MonoBehaviour
             Instance = this;
         }
 
-        _currentYRotation = 0.0f;
-        _currentXRotation = 0.0f;
+        _yRotation = 0.0f;
+        _xRotation = 0.0f;
 
         _minVerticalLookAngle = -(_verticalLookAngleRange / 2);
         _maxVerticalLookAngle = _verticalLookAngleRange / 2;
@@ -79,7 +79,7 @@ public class CameraController : MonoBehaviour
             _firstPersonCamera = newCamera.GetComponent<Camera>();
         }
     }
-    
+
     private void Update()
     {
         GetLookInput();
@@ -90,23 +90,23 @@ public class CameraController : MonoBehaviour
     private void GetLookInput()
     {
         /* Get mouse input */
-        _currentYRotation += Input.GetAxis(LOOKXAXISNAME) * _verticalLookSensitivity;
-        _currentXRotation += Input.GetAxis(LOOKYAXISNAME) * _horizontalLookSensitivity;
+        _yRotation = Input.GetAxis(LOOKXAXISNAME) * _verticalLookSensitivity;
+        _xRotation = Input.GetAxis(LOOKYAXISNAME) * _horizontalLookSensitivity;
 
         /* Clamp vertical look angle */
-        _currentXRotation = Mathf.Clamp(_currentXRotation, _minVerticalLookAngle, _maxVerticalLookAngle);
+        _xRotation = Mathf.Clamp(_xRotation, _minVerticalLookAngle, _maxVerticalLookAngle);
     }
 
     private void RotatePlayerHorizontally()
     {
         /* Rotate player based on horizontal input */
-        this.gameObject.transform.localEulerAngles = new Vector3(0, _currentYRotation, 0);
+        this.gameObject.transform.Rotate(0, _yRotation, 0);
     }
 
     private void RotateCameraVertically()
     {
         /* Rotate camera based on vertical input */
-        _firstPersonCamera.transform.localEulerAngles = new Vector3(_currentXRotation, 0, 0);   //LookY for the mouse (not the controller) needs to be set to inverse in project settings
+        _firstPersonCamera.transform.Rotate(_xRotation, 0, 0);      //LookY for the mouse (not the controller) needs to be set to inverse in project settings
     }
 
     private void OnDestroy()
