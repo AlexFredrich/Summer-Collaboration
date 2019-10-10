@@ -132,9 +132,9 @@ public class CharacterController : MonoBehaviour
         {
             _currentSpeed = _runSpeed;
         }
-        else
+        else if (IsOnGround())
         {
-            _currentSpeed = _walkSpeed;
+            _currentSpeed = _walkSpeed;     //speed is maintained while in mid-air regardless of whether sprint is held down
         }
     }
 
@@ -166,7 +166,7 @@ public class CharacterController : MonoBehaviour
         {
             _needToJump = false;
 
-            _rb.velocity = new Vector3(0, _jumpHeight * Time.deltaTime, 0);
+            _rb.velocity += new Vector3(0, _jumpHeight * Time.deltaTime, 0);
         }
     }
 
