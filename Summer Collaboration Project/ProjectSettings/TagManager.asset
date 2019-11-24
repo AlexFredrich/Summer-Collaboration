@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Wall
   - Rewindable
+  - SteamBattery
   layers:
   - Default
   - TransparentFX
