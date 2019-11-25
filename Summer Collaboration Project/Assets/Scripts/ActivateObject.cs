@@ -10,8 +10,8 @@ public class ActivateObject : MonoBehaviour
     [SerializeField]
     PickUp pickUp;
 
-    [SerializeField]
-    TimeObjectManager TimeObjectManager;
+    //[SerializeField]
+    //TimeObjectManager TimeObjectManager;
 
     IActivatable objectToActivate;
     TimeObject objectToFreeze;
