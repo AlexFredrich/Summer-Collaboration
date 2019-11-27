@@ -153,7 +153,7 @@ public class CharacterController : MonoBehaviour
         Vector3 yVelocity = new Vector3(0, _rb.velocity.y, 0);
 
         /* Move player based on velocity from directional input */
-        _rb.velocity = _movementDirection * _currentSpeed * Time.deltaTime;
+        _rb.velocity = _movementDirection * _currentSpeed * Time.fixedDeltaTime;
 
         /* Add y velocity back in to desired movement direction */
         _rb.velocity += yVelocity;      //since _movementDirection only has values for x and z velocity, we need to add y velocity to not constantly set vertical movement to 0 every fixed update
@@ -166,36 +166,59 @@ public class CharacterController : MonoBehaviour
         {
             _needToJump = false;
 
-            _rb.velocity += new Vector3(0, _jumpHeight * Time.deltaTime, 0);
+            _rb.velocity += new Vector3(0, _jumpHeight * Time.fixedDeltaTime, 0);
         }
     }
 
     private bool CanMoveInDirection(Vector3 direction)
     {
-        float distanceToPoints = (_collider.height / 2) - _collider.radius;
-
-        Vector3 point1 = this.gameObject.transform.position + _collider.center + (Vector3.up * distanceToPoints);
-        Vector3 point2 = this.gameObject.transform.position + _collider.center - (Vector3.up * distanceToPoints);
-
-        float radius = _collider.radius * 0.95f;    //must be slightly smaller than the radius of the capsule so it doesn't detect the ground
-        float castDistance = 0.5f;
-
-        RaycastHit[] hits = Physics.CapsuleCastAll(point1, point2, radius, direction, castDistance);
-
-        /* Returns false if the CapsuleCast hits an object tagged "Wall" while in mid-air so the player doesn't get stuck on the side of them */
+        /* Returns false if the SweepTest hits an object while in mid-air so the player doesn't get stuck on the side of them */
         if (!IsOnGround())
         {
-            foreach (RaycastHit objectHit in hits)
+            Vector3 currentHorizontalVelocity = _rb.velocity;
+
+            currentHorizontalVelocity.y = 0;
+
+            float moveDistance = currentHorizontalVelocity.magnitude * Time.fixedDeltaTime;
+
+            RaycastHit hit;
+
+            if (_rb.SweepTest(direction, out hit, moveDistance))
             {
-                if (objectHit.transform.gameObject.tag == WALLTAGNAME)   //READ: all objects the player cannot move through while jumping must be tagged "Wall"
-                {
-                    return false;
-                }
+                //_rb.velocity = new Vector3(0, _rb.velocity.y, 0);
+
+                return false;
             }
         }
 
-        /* Returns true if the player is on the ground or the CapsuleCast doesn't hit an object tagged "Wall" while in mid-air */
+        /* Returns true if the player is on the ground or the SweepTest doesn't hit an object while in mid-air */
         return true;
+
+        //***commented out to use SweepTest instead of CapsuleCast.***
+        //float distanceToPoints = (_collider.height / 2) - _collider.radius;
+
+        //Vector3 point1 = this.gameObject.transform.position + _collider.center + (Vector3.up * distanceToPoints);
+        //Vector3 point2 = this.gameObject.transform.position + _collider.center - (Vector3.up * distanceToPoints);
+
+        //float radius = _collider.radius * 0.95f;    //must be slightly smaller than the radius of the capsule so it doesn't detect the ground
+        //float castDistance = 0.5f;
+
+        //RaycastHit[] hits = Physics.CapsuleCastAll(point1, point2, radius, direction, castDistance);
+
+        ///* Returns false if the CapsuleCast hits an object tagged "Wall" while in mid-air so the player doesn't get stuck on the side of them */
+        //if (!IsOnGround())
+        //{
+        //    foreach (RaycastHit objectHit in hits)
+        //    {
+        //        if (objectHit.transform.gameObject.tag == WALLTAGNAME)   //READ: all objects the player cannot move through while jumping must be tagged "Wall"
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //}
+
+        ///* Returns true if the player is on the ground or the CapsuleCast doesn't hit an object tagged "Wall" while in mid-air */
+        //return true;
     }
 
     private bool IsOnGround()
@@ -210,7 +233,7 @@ public class CharacterController : MonoBehaviour
 
         RaycastHit[] hits = Physics.CapsuleCastAll(point1, point2, radius, -this.gameObject.transform.up, castDistance);
 
-        //commented out since it would be unnecessary work to tag all objects the player can jump off of. should check for objects the player can't jump off of instead.
+        //***commented out since it would be unnecessary work to tag all objects the player can jump off of. should check for objects the player can't jump off of instead.***
         ///* Returns true if the CapsuleCast hits an object tagged "Ground" */
         //foreach (RaycastHit objectHit in hits)
         //{
